@@ -10,13 +10,14 @@ import MovePageButton from '../button/MovePageButton';
 
 export default function IndexCommunity(props){
     const { ref: pictureRef, inView: pictureIsVisible } = useInView();
+    const { ref: textRef, inView: textVisible } = useInView();
 
     return (
         <div className={styles.body}>
             <section ref={pictureRef} className={styles.pictureSection}>
                 <img className={`${styles.mainPicture} ${pictureIsVisible ? styles.pictureAnimation : ''}`} src={SRC_PICTURE_COMMUNITY} alt="PictureCommunity"/>
             </section>
-            <section className={styles.textSection}>
+            <section ref={textRef} className={`${styles.textSection} ${textVisible ? styles.textAnimation : ''}`}>
                 <article className={styles.titleArticle}>
                     <h3 className={styles.titleText}>커뮤니티</h3>
                 </article>

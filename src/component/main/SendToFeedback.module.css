@@ -15,6 +15,27 @@
     background-color: #f1f1f1;
 }
 
+.scrollBodyLeft{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.scrollBodyRight{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: left;
+}
+
+.scrollAnimation{
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
 .textContainer{
     text-align: center;
 }

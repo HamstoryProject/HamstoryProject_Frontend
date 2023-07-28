@@ -14,6 +14,24 @@
     text-align: left;
 }
 
+.pictureAnimation{
+    animation-name: pictureAnimation;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes pictureAnimation{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+        opacity: 3;
+        transform: none;
+    }
+}
+
 .mainPicture{
     border-radius: 5%;
     width: 85%;
@@ -22,6 +40,24 @@
 
 .textSection{
     text-align: right;
+}
+
+.textAnimation{
+    animation-name: textAnimation;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes textAnimation{
+    from{
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to{
+        opacity: 3;
+        transform: none;
+    }
 }
 
 .titleArticle{

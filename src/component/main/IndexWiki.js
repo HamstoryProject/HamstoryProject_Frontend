@@ -10,10 +10,11 @@ import MovePageButton from '../button/MovePageButton';
 
 export default function IndexWiki(props){
     const { ref: pictureRef, inView: pictureIsVisible } = useInView();
+    const { ref: textRef, inView: textVisible } = useInView();
 
     return (
         <div className={styles.body}> 
-            <section className={styles.textSection}>
+            <section ref={textRef} className={`${styles.textSection} ${textVisible ? styles.textAnimation : ''}`}>
                 <article className={styles.titleArticle}>
                     <h3 className={styles.titleText}>위키</h3>
                 </article>
@@ -28,7 +29,7 @@ export default function IndexWiki(props){
                     <MovePageButton url={"/wiki"} text={"위키로 이동"}/>
                 </nav>
             </section>
-            <section ref={pictureRef} className={styles.pictureSection}>
+            <section ref={pictureRef} className={`${styles.indexPicture} ${pictureIsVisible ? styles.pictureAnimation : ''}`}>
                 <img className={styles.mainPicture} src={SRC_PICTURE_WIKI} alt="PictureWiki"/>
             </section>
         </div>
