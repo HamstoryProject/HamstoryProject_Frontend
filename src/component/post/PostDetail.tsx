@@ -11,16 +11,28 @@ import LikeCounter from '../analytics/LikeCounter';
 import PostProfile from './PostProfile';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import Comment from '../analytics/Comment';
 
 // css import
 import styles from './PostDetail.module.css';
 
-export default function PostDetail(){const { postId } = useParams();
-  const [postData, setPostData] = useState(null);
+// type interfacing
+type resType = {
+  title :string,
+  writer :string,
+  createdTime :string,
+  hits :string,
+  contents :string,
+  likes :string,
+  category :string,
+}
+
+export default function PostDetail(){
+  const { postId } = useParams();
+  const [postData, setPostData] = useState<resType | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(URL_POST_ONE_BOARD + postId)
       const res = await axios.get(URL_POST_ONE_BOARD + postId)
 
       const {
@@ -59,7 +71,7 @@ export default function PostDetail(){const { postId } = useParams();
       <header className={styles.header}><Header/></header>
       <main className={styles.main}>
         <div/>
-        <article className={styles.articleBody}>
+        <div className={styles.articleBody}>
           <section className={styles.sectionTitle}>
             <h1 className={styles.title}>{postData.title}</h1>
             <nav><BackButton/></nav>
@@ -72,7 +84,11 @@ export default function PostDetail(){const { postId } = useParams();
             <p className={styles.contentsText}>{postData.contents}</p>
           </section>
           <section className={styles.sectionLikes}><LikeCounter likes = {postData.likes}/></section>
-        </article>
+          <hr/>
+          <section>
+            <Comment writer={postData.writer}/>
+          </section>
+        </div>
         <div/>
       </main>
       <footer className={styles.footer}>

@@ -1,7 +1,13 @@
 // css import
 import styles from './PostProfile.module.css';
 
-export default function PostProfile(props){
+type propsType = {
+    writer :string,
+    createdTime :string
+    hits :string
+}
+
+export default function PostProfile(props :propsType){
     return(
         <div className={styles.body}>
             <section className={styles.sectionProfilePicture}>
