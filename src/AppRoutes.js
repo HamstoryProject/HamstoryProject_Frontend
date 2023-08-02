@@ -2,22 +2,20 @@
 import { Route, Routes } from 'react-router-dom';
 
 // component import
-import Main from './component/main/Main';
-import Login from './component/login/Login';
-import Community from './component/community/Community';
-import EmptyPage from './component/emptyPage/EmptyPage';
-import CommunityLatestPost from './component/community/CommunityLatestPost';
-import CommunityPosting from './component/community/CommunityPosting';
-import PostDetail from './component/post/PostDetail';
+import Main from './component/main/main/Main';
+import LoginMain from './component/login/main/LoginMain';
+import CommunityIndex from './component/community/index/CommunityIndex';
+import EmptyPage from './component/etc/empty/EmptyPage';
+import CommunityForumMain from './component/community/forumMain/CommunityForumMain';
+import PostDetail from './component/post/freeForum/detail/PostDetail';
 
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Main />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/community" element={<Community />} />
-    <Route path="/community/latestPost" element={<CommunityLatestPost />} />
-    <Route path="/community/latestPost/:postId" element={<PostDetail/>} />
-    <Route path="/community/posting" element={<CommunityPosting />} />
+    <Route path="/loginMain" element={<LoginMain />} />
+    <Route path="/community" element={<CommunityIndex />} />
+    <Route path="/community/freeForum" element={<CommunityForumMain />} />
+    <Route path="/community/freeForum/:postId" element={<PostDetail/>} />
     <Route path="/*" element={<EmptyPage />} />
   </Routes>
 );
