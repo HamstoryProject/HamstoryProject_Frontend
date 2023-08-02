@@ -6,7 +6,7 @@ import styles from './LikeCounter.module.css';
 
 // type interfacing
 type propsType = {
-  likes :string
+  likes :number
 }
 
 export default function LikeCounter(props :propsType){

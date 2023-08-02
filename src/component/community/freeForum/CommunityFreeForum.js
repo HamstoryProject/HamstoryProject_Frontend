@@ -2,7 +2,7 @@
 import styles from './CommunityFreeForum.module.css';
 
 export default function CommunityFreeForum(props){
-    const textTitle = "최신 글"
+    const textTitle = "자유게시판"
 
     return(
         <div className={styles.body}>

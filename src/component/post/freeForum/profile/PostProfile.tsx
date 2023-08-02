@@ -4,7 +4,7 @@ import styles from './PostProfile.module.css';
 type propsType = {
     writer :string,
     createdTime :string
-    hits :string
+    hits :number
 }
 
 export default function PostProfile(props :propsType){

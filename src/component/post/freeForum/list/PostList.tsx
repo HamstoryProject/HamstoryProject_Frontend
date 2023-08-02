@@ -6,7 +6,7 @@ import styles from './PostList.module.css';
 
 // type interfacing
 type propsType = {
-    id :string
+    id :number
 }
 
 export default function PostList(props :propsType){

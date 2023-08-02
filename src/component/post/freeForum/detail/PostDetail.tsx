@@ -21,9 +21,9 @@ type resType = {
   title :string,
   writer :string,
   createdTime :string,
-  hits :string,
+  hits :number,
   contents :string,
-  likes :string,
+  likes :number,
   category :string,
 }
 
