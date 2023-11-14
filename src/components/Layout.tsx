@@ -4,16 +4,19 @@ import { ICON_GIT, ICON_INFO, ICON_MENU } from "../config";
 
 const Wrapper = styled.div`
     width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 100px 1fr;
 `;
 
 const Menu = styled.div`
     width: 100%;
-    height:100%;
+    height:100px;
     display: grid;
     grid-template-columns: 1fr 2.571428fr 1fr;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 1px rgba(0,0,0,.1), 0 -1px rgba(0,0,0,.1);
 `;
 
 const MenuItem = styled.div`
@@ -23,14 +26,14 @@ const MenuItem = styled.div`
     place-items: center;
 `;
 
-const LogoTxt = styled.div`
+const LogoText = styled.p`
     font-size: 40px;
     letter-spacing: 0.025em;
     font-weight: 900;
     color: black;
 `;
 
-const TxtNav = styled.div`
+const TextNav = styled.div`
     width: 100%;
     height:100%;
     display: grid;
@@ -55,7 +58,14 @@ const IconNav = styled.div`
     }
 `;
 
-const Image = styled.img`
+const Footer = styled.div`
+    width: 100%;
+    height: 150px;
+    background-color: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export default function Layout(){
@@ -65,27 +75,36 @@ export default function Layout(){
         { name: '위키', path: '/wiki' },
         { name: '도움말', path: '/help' },
     ];
+
+    const iconItems = [
+        { src: ICON_GIT },
+        { src: ICON_INFO },
+        { src: ICON_MENU },
+    ];
     
     return (
         <Wrapper>
             <Menu>
                 <Link to="/">
                     <MenuItem>
-                        <LogoTxt>HAMSTORY</LogoTxt>
+                        <LogoText>HAMSTORY</LogoText>
                     </MenuItem>
                 </Link>
-                <TxtNav>
+                <TextNav>
                     {menuItems.map((item, index) => (
                         <Link key={index} to={item.path}><MenuItem><TxtNavTxt>{item.name}</TxtNavTxt></MenuItem></Link>
                     ))}
-                </TxtNav>
+                </TextNav>
                 <IconNav>
-                    <MenuItem><Image src={ICON_GIT}/></MenuItem>
-                    <MenuItem><Image src={ICON_INFO}/></MenuItem>
-                    <MenuItem><Image src={ICON_MENU}/></MenuItem>
+                    {iconItems.map((item, index) => (
+                        <MenuItem key={index}><img src={item.src}/></MenuItem>
+                    ))}
                 </IconNav>
             </Menu>
             <Outlet/>
+            <Footer>
+                <h3>뿌터</h3>
+            </Footer>
         </Wrapper>
     );
 }

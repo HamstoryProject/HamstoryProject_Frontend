@@ -4,8 +4,6 @@ import { ICON_TO_UNDER, IMAGE_COMMUNITY } from "../config";
 export default function Home(){
     const Wrapper = styled.div`
         width: 100%;
-        height: 100%;
-        display: block;
     `;
 
     const Title = styled.div`
@@ -18,6 +16,8 @@ export default function Home(){
     `;
 
     const SectionTitle = styled.div`
+        display:grid;
+        grid-template-rows: 1fr 1fr;
         letter-spacing: -3.5px;
         animation-name: titleTextAnimation;
         animation-duration: 1s;
@@ -36,23 +36,15 @@ export default function Home(){
         }
     `;
 
-    const TxtTitle = styled.span`
-        font-size: 52pt;
+    const TitleText = styled.h1`
         color: #333d4b;
-    `;
-
-    const TxtTitleBold = styled.span`
-        font-size: 66pt;
-        color: #191f28;
-    `;
-
-    const titleText = {
-        txt1 : "햄스터의 모든것",
-        bold : "HAMSTORY",
-        txt2 : "에서 만나보세요"
-    }
+    `
 
     const SectionToUnder = styled.div`
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        place-items: center;
+        grid-row-gap: 20%;
         letter-spacing: -1px;
         animation-name: toUnderAnimation;
         animation-duration: 1.5s;
@@ -71,7 +63,6 @@ export default function Home(){
     `;
 
     const TxtToUnder = styled.p`
-        font-size: 14pt;
         color: #6b7684;
     `;
 
@@ -82,46 +73,46 @@ export default function Home(){
         height: 100vh;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        column-gap: 5%;
         place-items: center;
     `;
 
-    const Picture = styled.img` 
+    const Picture = styled.img`
         border-radius: 5%;
+        width: 80%;
+        aspect-ratio: 1/1;
     `;
 
-    const Section = styled.div`
-        width: 100%;
-        height: 85%;
-        display: flex;
-        align-items: center;
-    `;
-
-    const Box = styled.div`
-        width: 85%;
+    const SectionMain = styled.div`
+        width: 80%;
+        height: 50%;
         display: grid;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 1.25fr 0.75fr 1fr;
+        align-items: center;
     `;
 
     const SubTitle = styled.h2`
         width: 100%;
         height: 100%;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
+        color: #72b2c6;
     `;
 
     const ContentsTitle = styled.h1`
         width: 100%;
         height: 100%;
-        display: flex;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
         align-items: center;
     `;
 
     const Contents = styled.h3`
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: flex-top;
+        display: grid;
+        align-items: center;
+        grid-template-rows: 1fr 1fr;
+        color: #333d4b;
     `;
 
     const Button = styled.button`
@@ -132,26 +123,34 @@ export default function Home(){
     return(
         <Wrapper>
             <Title>
-                <SectionTitle><TxtTitle><p>{titleText.txt1}</p> <TxtTitleBold>{titleText.bold}</TxtTitleBold>{titleText.txt2}</TxtTitle></SectionTitle>
+                <SectionTitle>
+                    <TitleText>햄스터의 모든 것</TitleText>
+                    <TitleText><b>HAMSTORY</b>에서 만나보세요</TitleText>
+                </SectionTitle>
                 <SectionToUnder>
-                    <TxtToUnder>아래로 이동</TxtToUnder>
+                    <TxtToUnder>아래로 스크롤 해 자세히 알아보기</TxtToUnder>
                     <Image src={ICON_TO_UNDER}/>
                 </SectionToUnder>
             </Title>
             <Main>
                 <Picture src={IMAGE_COMMUNITY}/>
-                <Section>
-                    <Box>
-                        <SubTitle>커뮤니티</SubTitle>
-                        <ContentsTitle>햄스터들의 다채로운 일상들을 커뮤니티에서 만나보세요</ContentsTitle>
-                        <Contents>홈페이지 이용자분들이 공유해주신 사랑스러운 가족분들을 만나보실 수 있어요.</Contents>
-                        <Button/>
-                    </Box>
-                </Section>
+                <SectionMain>
+                    <SubTitle>커뮤니티</SubTitle>
+                    <ContentsTitle><p>햄스터들의 다채로운 일상들을</p><p>커뮤니티에서 만나보세요</p></ContentsTitle>
+                    <Contents><p>홈페이지 이용자분들이 공유해주신</p><p>사랑스러운 가족분들을 만나보실 수 있어요.</p></Contents>
+                    <Button/>
+                </SectionMain>
             </Main>
-            <Main>메인 2</Main>
+            <Main>
+                <SectionMain style={{alignItems : "right"}}>
+                    <SubTitle>커뮤니티</SubTitle>
+                    <ContentsTitle><p>햄스터들의 다채로운 일상들을</p><p>커뮤니티에서 만나보세요</p></ContentsTitle>
+                    <Contents><p>홈페이지 이용자분들이 공유해주신</p><p>사랑스러운 가족분들을 만나보실 수 있어요.</p></Contents>
+                    <Button/>
+                </SectionMain>
+                <Picture src={IMAGE_COMMUNITY}/>
+            </Main>
             <h3>피드백</h3>
-            <h4>footer</h4>
         </Wrapper>
     );
 }

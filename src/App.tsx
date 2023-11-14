@@ -22,10 +22,17 @@ const GlobalStyles = createGlobalStyle`
   *{
     box-sizing: border-box;
   }
+  @font-face {
+    font-family: 'NotoSansKRMedium';
+    src: url('public/fonts/NotoSansKR-Medium.otf');
+  }
   body{
     background-color: white;
     color: black;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: 'NotoSansKRMedium';
+    margin-top: 100px;
+    font-size: 18px;
+    letter-spacing: -0.7px;
   }
   a{
     text-decoration: none;
@@ -34,14 +41,21 @@ const GlobalStyles = createGlobalStyle`
     font-size: 50px;
     letter-spacing: -3px;
     line-height: 1.5;
+    color: black;
   }
   h2{
     font-size: 28px;
     letter-spacing: -1.5px;
+    color: black;
   }
   h3{
     font-size: 22px;
     letter-spacing: -1px;
+    color: black;
+  }
+  b{
+    font-size: 1.3em;
+    color: black
   }
 `;
 
