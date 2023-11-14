@@ -30,6 +30,19 @@ const GlobalStyles = createGlobalStyle`
   a{
     text-decoration: none;
   }
+  h1{
+    font-size: 50px;
+    letter-spacing: -3px;
+    line-height: 1.5;
+  }
+  h2{
+    font-size: 28px;
+    letter-spacing: -1.5px;
+  }
+  h3{
+    font-size: 22px;
+    letter-spacing: -1px;
+  }
 `;
 
 const Wrapper = styled.div`

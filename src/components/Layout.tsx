@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { ICON_GIT, ICON_INFO, ICON_MENU } from "../config";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -43,6 +44,20 @@ const TxtNavTxt = styled.div`
     color: black;
 `;
 
+const IconNav = styled.div`
+    width: 100%;
+    height:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    svg{
+        width: 45%;
+        height: 45%;
+    }
+`;
+
+const Image = styled.img`
+`;
+
 export default function Layout(){
     const menuItems = [
         { name: "햄스토리", path: "/hamstory" },
@@ -64,7 +79,11 @@ export default function Layout(){
                         <Link key={index} to={item.path}><MenuItem><TxtNavTxt>{item.name}</TxtNavTxt></MenuItem></Link>
                     ))}
                 </TxtNav>
-                <MenuItem></MenuItem>
+                <IconNav>
+                    <MenuItem><Image src={ICON_GIT}/></MenuItem>
+                    <MenuItem><Image src={ICON_INFO}/></MenuItem>
+                    <MenuItem><Image src={ICON_MENU}/></MenuItem>
+                </IconNav>
             </Menu>
             <Outlet/>
         </Wrapper>
