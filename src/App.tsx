@@ -3,6 +3,7 @@ import Layout from "./components/Layout"
 import Home from "./routes/Home"
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import Login from "./routes/Login";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,12 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home/>,
-      }
+      },
     ]
+  },
+  {
+    path: "/login",
+    element: <Login/>,
   },
 ])
 
@@ -30,7 +35,6 @@ const GlobalStyles = createGlobalStyle`
     background-color: white;
     color: black;
     font-family: 'NotoSansKRMedium';
-    margin-top: 100px;
     font-size: 18px;
     letter-spacing: -0.7px;
   }

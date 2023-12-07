@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ICON_TO_UNDER, IMAGE_COMMUNITY } from "../config";
+import { ICON_TO_UNDER, IMAGE_COMMUNITY, IMAGE_WIKI } from "../config";
 
 export default function Home(){
     const Wrapper = styled.div`
@@ -93,7 +93,7 @@ export default function Home(){
     const SubTitle = styled.h2`
         width: 100%;
         height: 100%;
-        display: flex;
+        display: grid;
         align-items: center;
         color: #72b2c6;
     `;
@@ -134,7 +134,7 @@ export default function Home(){
             </Title>
             <Main>
                 <Picture src={IMAGE_COMMUNITY}/>
-                <SectionMain>
+                <SectionMain style={{textAlign : "left"}}>
                     <SubTitle>커뮤니티</SubTitle>
                     <ContentsTitle><p>햄스터들의 다채로운 일상들을</p><p>커뮤니티에서 만나보세요</p></ContentsTitle>
                     <Contents><p>홈페이지 이용자분들이 공유해주신</p><p>사랑스러운 가족분들을 만나보실 수 있어요.</p></Contents>
@@ -142,13 +142,13 @@ export default function Home(){
                 </SectionMain>
             </Main>
             <Main>
-                <SectionMain style={{alignItems : "right"}}>
-                    <SubTitle>커뮤니티</SubTitle>
-                    <ContentsTitle><p>햄스터들의 다채로운 일상들을</p><p>커뮤니티에서 만나보세요</p></ContentsTitle>
-                    <Contents><p>홈페이지 이용자분들이 공유해주신</p><p>사랑스러운 가족분들을 만나보실 수 있어요.</p></Contents>
+                <SectionMain style={{textAlign : "right"}}>
+                    <SubTitle>위키</SubTitle>
+                    <ContentsTitle><p>클릭하는 순간,</p><p>당신도 햄스터 박사</p></ContentsTitle>
+                    <Contents><p>다양한 종류의 햄스터를 알아가보세요.</p></Contents>
                     <Button/>
                 </SectionMain>
-                <Picture src={IMAGE_COMMUNITY}/>
+                <Picture src={IMAGE_WIKI}/>
             </Main>
             <h3>피드백</h3>
         </Wrapper>

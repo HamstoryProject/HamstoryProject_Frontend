@@ -1,6 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { ICON_GIT, ICON_INFO, ICON_MENU } from "../config";
+import { useState } from "react";
+import MoveToSignUp from "../modals/MoveToSignUp";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -41,7 +43,7 @@ const TextNav = styled.div`
     place-items: center;
 `;
 
-const TxtNavTxt = styled.div`
+const ItemText = styled.div`
     font-size: 20px;
     letter-spacing: -0.1em;
     color: black;
@@ -81,7 +83,11 @@ export default function Layout(){
         { src: ICON_INFO },
         { src: ICON_MENU },
     ];
+
+    const [isOpen, setIsOpen] = useState(false);
     
+    const hModalTrigger = () => { setIsOpen(!isOpen); };
+
     return (
         <Wrapper>
             <Menu>
@@ -92,13 +98,16 @@ export default function Layout(){
                 </Link>
                 <TextNav>
                     {menuItems.map((item, index) => (
-                        <Link key={index} to={item.path}><MenuItem><TxtNavTxt>{item.name}</TxtNavTxt></MenuItem></Link>
+                        <Link key={index} to={item.path}><MenuItem>
+                            <ItemText>{item.name}</ItemText>
+                        </MenuItem></Link>
                     ))}
                 </TextNav>
                 <IconNav>
                     {iconItems.map((item, index) => (
-                        <MenuItem key={index}><img src={item.src}/></MenuItem>
+                        <MenuItem key={index}><img onClick={hModalTrigger} src={item.src}/></MenuItem>
                     ))}
+                    <MoveToSignUp isOpen={isOpen} onClose={hModalTrigger}/>
                 </IconNav>
             </Menu>
             <Outlet/>
