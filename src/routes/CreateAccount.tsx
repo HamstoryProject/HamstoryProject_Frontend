@@ -1,17 +1,11 @@
 import styled from "styled-components";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL_LOGIN } from "../config.ts";
+import { URL_SIGNUP } from "../config.ts";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 
-interface FormValue {
-  	email: string
-  	password: string
-};
-
-export default function Login(){
+export default function CreateAccount(){
     const Body = styled.div`
         width: 100%;
         height: 100%;
@@ -28,27 +22,22 @@ export default function Login(){
 
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValue>();
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm();
     const [error, setError] = useState("");
 
-    const [cookies, setCookie, removeCookie] = useCookies(["loggedIn"]);
-
-    const TIME = 3600;
-
-    const onSubmit : SubmitHandler<FormValue> = async(data) => {
+    const onSubmit = async(data : any) => {
         setError("");
-        if(isSubmitting || data.email === "" || data.password === ""){
+        if(isSubmitting || data.name === "" || data.email === "" || data.password === ""){
             return;
         }
         else{
             try{
-                const [email, password] = [data.email, data.password]
-                const res = await axios.post(URL_LOGIN, {
+                const [name, email, password] = [data.name, data.email, data.password];
+                const res = await axios.post(URL_SIGNUP, {
+                    name,
                     email,
                     password,
                 })
-                const expiration = new Date(Date.now() + TIME * 1000);
-                setCookie("loggedIn", res.data, { path: "/", expires: expiration });
                 navigate("/");
             }
             catch(err){
@@ -62,12 +51,14 @@ export default function Login(){
             <h1>HAMSTORY</h1>
             <Button>로그인 화원가입</Button>
             <Form onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor="name">닉네임</label>
+                <Input id="name" type="text" placeholder="hamstory" {...register("name")}/>
                 <label htmlFor="email">이메일</label>
                 <Input id="email" type="email" placeholder="hamstory@email.com" {...register("email")}/>
                 <label htmlFor="password">비밀번호</label>
                 <Input id="password" type="password" placeholder="************" {...register("password")}/>
                 {error !== "" ? <Error>{error}</Error> : null}
-                <button type="submit" disabled={isSubmitting}>로그인</button>
+                <button type="submit" disabled={isSubmitting}>회원가입</button>
             </Form>
         </Body>
     );
