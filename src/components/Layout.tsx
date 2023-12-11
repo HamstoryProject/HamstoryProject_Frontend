@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { ICON_GIT, ICON_INFO, ICON_MENU } from "../config";
 import { useState } from "react";
-import MoveToSignUp from "../modals/MoveToSignUp";
+import DropDownMenu from "../dropDown/DropDownMenu";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -84,9 +84,7 @@ export default function Layout(){
         { src: ICON_MENU },
     ];
 
-    const [isOpen, setIsOpen] = useState(false);
-    
-    const hModalTrigger = () => { setIsOpen(!isOpen); };
+    const [openMenu, setOpenMenu] = useState(false);
 
     return (
         <Wrapper>
@@ -105,14 +103,16 @@ export default function Layout(){
                 </TextNav>
                 <IconNav>
                     {iconItems.map((item, index) => (
-                        <MenuItem key={index}><img onClick={hModalTrigger} src={item.src}/></MenuItem>
+                        <MenuItem key={index}><img src={item.src} onClick={() => setOpenMenu(prev => !prev)}/>{openMenu && <DropDownMenu/>}</MenuItem>
                     ))}
-                    <MoveToSignUp isOpen={isOpen} onClose={hModalTrigger}/>
+                    
                 </IconNav>
+                
             </Menu>
             <Outlet/>
             <Footer>
                 <h3>뿌터</h3>
+                
             </Footer>
         </Wrapper>
     );

@@ -53,7 +53,7 @@ export default function Login(){
                 navigate("/");
             }
             catch(err){
-                setError("로그인 중 에러가 발생하였습니다.");
+                setError("로그인 통신중 에러가 발생하였습니다. 잠시후 다시 시도해보시길 바랍니다.");
             }
         }
     };

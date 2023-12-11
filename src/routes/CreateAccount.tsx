@@ -42,7 +42,7 @@ export default function CreateAccount(){
                 navigate("/");
             }
             catch(err){
-                setResError("회원가입 통신중 에러가 발생하였습니다. 재시도해주시길 바랍니다.");
+                setResError("회원가입 통신중 에러가 발생하였습니다. 잠시후 다시 시도해보시길 바랍니다.");
             }
         }
     };
