@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -65,7 +66,7 @@ export default function MoveToSignUp({ isOpen, onClose }: MoveToSignUpProps) {
             </Container>
             <Hr/>
             <Container>
-                <Button>로그인</Button>
+                <Button><Link to={"/login"}>로그인</Link></Button>
             </Container>
         </Modal>
     );

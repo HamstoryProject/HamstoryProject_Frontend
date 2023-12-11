@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { URL_LOGIN } from "../config.ts";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 
 interface FormValue {
   	email: string
@@ -52,15 +53,15 @@ export default function Login(){
                 navigate("/");
             }
             catch(err){
-                setError("error");
+                setError("로그인 중 에러가 발생하였습니다.");
             }
         }
     };
 
     return(
         <Body>
-            <h1>HAMSTORY</h1>
-            <Button>로그인 화원가입</Button>
+            <Link to={"/"}><h1>HAMSTORY</h1></Link>
+            <Link to={"/login"}><Button>로그인</Button></Link><Link to={"/create_account"}><Button>회원가입</Button></Link>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email">이메일</label>
                 <Input id="email" type="email" placeholder="hamstory@email.com" {...register("email")}/>

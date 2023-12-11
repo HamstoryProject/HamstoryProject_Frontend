@@ -4,6 +4,7 @@ import Home from "./routes/Home"
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import Login from "./routes/Login";
+import CreateAccount from "./routes/CreateAccount";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login/>,
   },
+  {
+    path: "/create_account",
+    element: <CreateAccount/>,
+  }
 ])
 
 const GlobalStyles = createGlobalStyle`
