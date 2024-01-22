@@ -33,12 +33,17 @@ export default function CreateAccount(){
         }
         else{
             try{
-                const [name, email, password] = [data.name, data.email, data.password];
                 const res = await axios.post(URL_SIGNUP, {
-                    name,
-                    email,
-                    password,
-                })
+                    nickName : data.name,
+                    email : data.email,
+                    pw : data.password,
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                },
+                )
+                console.log(res)
                 navigate("/");
             }
             catch(err){

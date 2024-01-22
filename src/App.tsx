@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import Login from "./routes/Login";
 import CreateAccount from "./routes/CreateAccount";
+import { CookiesProvider } from 'react-cookie';
 
 const router = createBrowserRouter([
   {
@@ -75,10 +76,12 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <Wrapper>
-      <GlobalStyles/>
-      <RouterProvider router={router}/>
-    </Wrapper>
+    <CookiesProvider>
+      <Wrapper>
+        <GlobalStyles/>
+        <RouterProvider router={router}/>
+      </Wrapper>
+    </CookiesProvider>
   )
 }
 

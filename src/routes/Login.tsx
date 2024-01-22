@@ -32,7 +32,7 @@ export default function Login(){
     const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValue>();
     const [error, setError] = useState("");
 
-    const [cookies, setCookie, removeCookie] = useCookies(["loggedIn"]);
+    const [cookies, setCookie, removeCookie] = useCookies(["id"]);
 
     const TIME = 3600;
 
@@ -43,13 +43,18 @@ export default function Login(){
         }
         else{
             try{
-                const [email, password] = [data.email, data.password]
                 const res = await axios.post(URL_LOGIN, {
-                    email,
-                    password,
-                })
+                    email : data.email,
+                    pw : data.password,
+                });
+
+                if(res.data === ''){
+                    setError("아이디 또는 비밀번호가 일치하지 않습니다.")
+                    return;
+                }
+
                 const expiration = new Date(Date.now() + TIME * 1000);
-                setCookie("loggedIn", res.data, { path: "/", expires: expiration });
+                setCookie("id", res.data, { path: "/", expires: expiration });
                 navigate("/");
             }
             catch(err){

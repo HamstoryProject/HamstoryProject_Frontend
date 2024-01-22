@@ -1,30 +1,18 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useCookies } from 'react-cookie';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { URL_INFO } from "../config";
 
-export default function DropDownMenu(){
-    const Wrap = styled.div`
-        padding: 5px;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100px;
-        right: 8rem;
-        width: 160px;
-        background-color: white;
-        border: 1px solid gray;
-    `;
+interface UserData {
+    "memberEmail": string,
+    "memberPassword": string,
+    "memberName": string,
+	"imageUrl": string,
+};
 
-    const Ul = styled.ul`
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    `;
-    
-    const TextName = styled.li`
-        padding: 5px;
-        font-size: 16px;
-    `
-
+function PleaseLogin(){
     const TextAlert = styled.li`
         padding: 5px;
         font-size: 13px;
@@ -50,12 +38,60 @@ export default function DropDownMenu(){
     `
 
     return(
+        <>
+            <TextAlert>로그인 해주세요!</TextAlert>
+            <Hr/>
+            <ButtonLi><Button as={Link} to={"/login"}>로그인</Button></ButtonLi>
+        </>
+    );
+}
+
+export default function DropDownMenu(){
+    const Wrap = styled.div`
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        right: 8rem;
+        width: 160px;
+        background-color: white;
+        border: 1px solid gray;
+    `;
+
+    const Ul = styled.ul`
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    `;
+    
+    const TextName = styled.li`
+        padding: 5px;
+        font-size: 16px;
+    `
+
+    const [cookies, setCookie, removeCookie] = useCookies(["id"]);
+    const [userdata, setUserData] = useState<UserData | null>(null);
+
+    const init = async() => {
+        const res = await axios.get(URL_INFO, {
+            headers: {
+                "content-type": "application/json",
+                "Authorization": "Bearer " + cookies.id,
+            }
+        })
+        setUserData(res.data);
+    }
+
+    useEffect(() => {
+        init();
+    }, [])
+
+    return(
         <Wrap>
             <Ul>
-                <TextName>닉네임</TextName>
-                <TextAlert>로그인 해주세요!</TextAlert>
-                <Hr/>
-                <ButtonLi><Button as={Link} to={"/login"}>로그인</Button></ButtonLi>
+                <TextName>{userdata === null ? "UserName" : userdata.memberName}</TextName>
+                {userdata === null ? <PleaseLogin/> : null}
             </Ul>
         </Wrap>
     );
