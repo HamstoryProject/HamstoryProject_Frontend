@@ -105,14 +105,11 @@ export default function Layout(){
                     {iconItems.map((item, index) => (
                         <MenuItem key={index}><img src={item.src} onClick={() => setOpenMenu(prev => !prev)}/>{openMenu && <DropDownMenu/>}</MenuItem>
                     ))}
-                    
                 </IconNav>
-                
             </Menu>
             <Outlet/>
             <Footer>
                 <h3>뿌터</h3>
-                
             </Footer>
         </Wrapper>
     );

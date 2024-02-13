@@ -37,12 +37,7 @@ export default function CreateAccount(){
                     nickName : data.name,
                     email : data.email,
                     pw : data.password,
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                },
-                )
+                })
                 console.log(res)
                 navigate("/");
             }

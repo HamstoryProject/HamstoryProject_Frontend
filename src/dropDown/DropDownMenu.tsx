@@ -1,16 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useCookies } from 'react-cookie';
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { URL_INFO } from "../config";
-
-interface UserData {
-    "memberEmail": string,
-    "memberPassword": string,
-    "memberName": string,
-	"imageUrl": string,
-};
 
 function PleaseLogin(){
     const TextAlert = styled.li`
@@ -46,7 +35,7 @@ function PleaseLogin(){
     );
 }
 
-export default function DropDownMenu(){
+export default function DropDownMenu(props : any){
     const Wrap = styled.div`
         padding: 5px;
         display: flex;
@@ -70,28 +59,11 @@ export default function DropDownMenu(){
         font-size: 16px;
     `
 
-    const [cookies, setCookie, removeCookie] = useCookies(["id"]);
-    const [userdata, setUserData] = useState<UserData | null>(null);
-
-    const init = async() => {
-        const res = await axios.get(URL_INFO, {
-            headers: {
-                "content-type": "application/json",
-                "Authorization": "Bearer " + cookies.id,
-            }
-        })
-        setUserData(res.data);
-    }
-
-    useEffect(() => {
-        init();
-    }, [])
-
     return(
         <Wrap>
             <Ul>
-                <TextName>{userdata === null ? "UserName" : userdata.memberName}</TextName>
-                {userdata === null ? <PleaseLogin/> : null}
+                <TextName>{props.userdata === null ? "UserName" : props.userdata.memberName}</TextName>
+                {props.userdata === null ? <PleaseLogin/> : null}
             </Ul>
         </Wrap>
     );
