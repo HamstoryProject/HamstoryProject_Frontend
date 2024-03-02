@@ -8,7 +8,7 @@ export default function Home(){
 
     const Title = styled.div`
         width: 100%;
-        height: 90vh;
+        height: 100vh;
         display: grid;
         grid-template-rows: 86% 14%;
         align-items: center;
