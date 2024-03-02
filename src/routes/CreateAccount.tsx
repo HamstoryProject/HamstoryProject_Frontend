@@ -6,6 +6,12 @@ import { URL_SIGNUP } from "../config.ts";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+interface FormValue {
+    nickName: string;
+    email: string;
+    password: string;
+};
+
 export default function CreateAccount(){
     const Body = styled.div`
         width: 100%;
@@ -23,22 +29,25 @@ export default function CreateAccount(){
 
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm();
+    const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<FormValue>();
     const [resError, setResError] = useState("");
 
-    const onSubmit = async(data : any) => {
+    const onSubmit = async(data : FormValue) => {
         setResError("");
-        if(isSubmitting || data.name === "" || data.email === "" || data.password === ""){
+        if(isSubmitting || data.nickName === "" || data.email === "" || data.password === ""){
             return;
         }
         else{
             try{
-                const res = await axios.post(URL_SIGNUP, {
-                    nickName : data.name,
-                    email : data.email,
-                    pw : data.password,
-                })
-                console.log(res)
+                const formData = new FormData();
+                formData.append('data', new Blob([JSON.stringify({
+                    nickName: data.nickName,
+                    email: data.email,
+                    pw: data.password,
+                })], {
+                    type: "application/json"
+                }));
+                await axios.post(URL_SIGNUP, formData);
                 navigate("/");
             }
             catch(err){
@@ -52,12 +61,12 @@ export default function CreateAccount(){
             <Link to={"/"}><h1>HAMSTORY</h1></Link>
             <Link to={"/login"}><Button>로그인</Button></Link><Link to={"/create_account"}><Button>회원가입</Button></Link>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="name">닉네임</label>
-                <Input id="name" type="text" placeholder="hamstory" {...register("name", {
+                <label htmlFor="nickName">닉네임</label>
+                <Input id="nickName" type="text" placeholder="hamstory" {...register("nickName", {
                     required: "이름은 필수 입력입니다.",
                 })}
-                aria-invalid={isSubmitting ? (errors.name ? "true" : "false") : undefined}/>
-                {errors.name && <Error>{errors.name.message?.toString()}</Error>}
+                aria-invalid={isSubmitting ? (errors.nickName ? "true" : "false") : undefined}/>
+                {errors.nickName && <Error>{errors.nickName.message?.toString()}</Error>}
                 <label htmlFor="email">이메일</label>
                 <Input id="email" type="email" placeholder="hamstory@email.com" {...register("email", { 
                     required: "이메일은 필수 입력입니다.",

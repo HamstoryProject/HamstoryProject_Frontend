@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL_LOGIN } from "../config.ts";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 
 interface FormValue {
@@ -32,10 +31,6 @@ export default function Login(){
     const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValue>();
     const [error, setError] = useState("");
 
-    const [cookies, setCookie, removeCookie] = useCookies(["id"]);
-
-    const TIME = 3600;
-
     const onSubmit : SubmitHandler<FormValue> = async(data) => {
         setError("");
         if(isSubmitting || data.email === "" || data.password === ""){
@@ -46,15 +41,15 @@ export default function Login(){
                 const res = await axios.post(URL_LOGIN, {
                     email : data.email,
                     pw : data.password,
+                }, 
+                {
+                    withCredentials: true
                 });
 
                 if(res.data === ''){
                     setError("아이디 또는 비밀번호가 일치하지 않습니다.")
                     return;
                 }
-
-                const expiration = new Date(Date.now() + TIME * 1000);
-                setCookie("id", res.data, { path: "/", expires: expiration });
                 navigate("/");
             }
             catch(err){
