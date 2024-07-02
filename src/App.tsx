@@ -52,7 +52,6 @@ const GlobalStyles = createGlobalStyle`
   h1{
     font-size: 50px;
     letter-spacing: -3px;
-    line-height: 1.5;
     color: black;
   }
   h2{
@@ -71,11 +70,6 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-`;
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   
@@ -86,10 +80,8 @@ function App() {
 
   return (
     <CookiesProvider>
-      <Wrapper>
-        <GlobalStyles/>
-        {isLoading ? <LoadingScreen/> : <RouterProvider router={router}/>}
-      </Wrapper>
+      <GlobalStyles/>
+      {isLoading ? <LoadingScreen/> : <RouterProvider router={router}/>}
     </CookiesProvider>
   )
 }

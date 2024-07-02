@@ -12,6 +12,7 @@ export default function Title(){
     `;
 
     const SectionTitle = styled.div`
+    
         display:grid;
         grid-template-rows: 1fr 1fr;
         letter-spacing: -3.5px;

@@ -4,7 +4,7 @@ import Navbar from "./menu/Navbar";
 import Footer from "./Footer";
 
 const Wrapper = styled.div`
-    display: grid;
+    display: block;
     width: 100%;
     height: 100%;
 `;
