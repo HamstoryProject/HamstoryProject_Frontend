@@ -12,20 +12,17 @@ export default function Title(){
     `;
 
     const SectionTitle = styled.div`
-    
-        display:grid;
-        grid-template-rows: 1fr 1fr;
-        letter-spacing: -3.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         animation-name: titleTextAnimation;
         animation-duration: 1s;
         animation-iteration-count: 1;
-
         @keyframes titleTextAnimation{
             from{
                 opacity: 0;
                 transform: translateY(-2vh);
             }
-
             to{
                 opacity: 3;
                 transform: none;
@@ -38,21 +35,18 @@ export default function Title(){
     `
 
     const SectionToUnder = styled.div`
-        display: grid;
-        grid-template-rows: 1fr 1fr;
+        display: flex;
+        flex-direction : column;
         place-items: center;
-        grid-row-gap: 20%;
-        letter-spacing: -1px;
+        row-gap: 15px;
         animation-name: toUnderAnimation;
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
         animation-direction: alternate;
-
         @keyframes toUnderAnimation{
             from{
                 margin-bottom: 4vh;
             }
-
             to{
                 margin-bottom: 0px;
             }
@@ -68,8 +62,7 @@ export default function Title(){
     return(
         <Title>
             <SectionTitle>
-                <TitleText>햄스터의 모든 것</TitleText>
-                <TitleText><b>HAMSTORY</b>에서 만나보세요</TitleText>
+                <TitleText>햄스터의 모든 것<br/><b>HAMSTORY</b>에서 만나보세요</TitleText>
             </SectionTitle>
             <SectionToUnder>
                 <TxtToUnder>아래로 스크롤 해 자세히 알아보기</TxtToUnder>

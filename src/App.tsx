@@ -52,6 +52,7 @@ const GlobalStyles = createGlobalStyle`
   h1{
     font-size: 50px;
     letter-spacing: -3px;
+    line-height: 1.4;
     color: black;
   }
   h2{
@@ -62,6 +63,7 @@ const GlobalStyles = createGlobalStyle`
   h3{
     font-size: 22px;
     letter-spacing: -1px;
+    line-height: 1.5;
     color: black;
   }
   b{

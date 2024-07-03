@@ -3,6 +3,7 @@ import { IMAGE_COMMUNITY, IMAGE_WIKI } from "../../config";
 
 interface Props{
     alignItems : string;
+    textAlign : string;
 }
 
 export default function Main(){
@@ -16,7 +17,7 @@ export default function Main(){
         width: 100%;
         height: 100vh;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
         place-items: center;
     `;
 
@@ -26,8 +27,9 @@ export default function Main(){
         display: flex;
         flex-direction : column;
         justify-content: center;
-        row-gap: 25px;
+        row-gap: 30px;
         align-items: ${props => props.alignItems};
+        text-align: ${props => props.textAlign};
     `;
 
     const Picture = styled.img`
@@ -53,19 +55,17 @@ export default function Main(){
         <Main>
             <Article>
                 <Picture src={IMAGE_COMMUNITY}/>
-                <Section alignItems = "flex-start">
+                <Section alignItems = "flex-start" textAlign = "left">
                     <SubTitle>커뮤니티</SubTitle>
-                    <h1>햄스터들의 다채로운 일상들을</h1>
-                    <h1>커뮤니티에서 만나보세요</h1>
-                    <Content>홈페이지 이용자분들이 공유해주신</Content>
-                    <Content>사랑스러운 가족분들을 만나보실 수 있어요.</Content>
+                    <h1>햄스터들의 다채로운 일상들을<br/>커뮤니티에서 만나보세요</h1>
+                    <Content>홈페이지 이용자분들이 공유해주신<br/>사랑스러운 가족분들을 만나보실 수 있어요.</Content>
                     <Button/>
                 </Section>
             </Article>
             <Article>
-                <Section alignItems = "flex-end">
+                <Section alignItems = "flex-end" textAlign = "right">
                     <SubTitle>위키</SubTitle>
-                    <h1>클릭하는 순간,</h1><h1>당신도 햄스터 박사</h1>
+                    <h1>클릭하는 순간,<br/>당신도 햄스터 박사</h1>
                     <Content>다양한 종류의 햄스터를 알아가보세요.</Content>
                     <Button/>
                 </Section>
