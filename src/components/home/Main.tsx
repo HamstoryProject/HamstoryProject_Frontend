@@ -39,7 +39,7 @@ const Picture = styled.img`
 `;
 
 const SubTitle = styled.h2`
-    color: #72b2c6;
+    color: #3182f6;
 `;
 
 const Content = styled.h3`
@@ -47,8 +47,13 @@ const Content = styled.h3`
 `;
 
 const Button = styled.button`
-    width: 300px;
-    height: 60px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    background-color: #3182f6;
 `;
 
 export default function Main(){
@@ -63,7 +68,7 @@ export default function Main(){
                     <SubTitle>커뮤니티</SubTitle>
                     <h1>햄스터들의 다채로운 일상들을<br/>커뮤니티에서 만나보세요</h1>
                     <Content>홈페이지 이용자분들이 공유해주신<br/>사랑스러운 가족분들을 만나보실 수 있어요.</Content>
-                    <Button/>
+                    <Button>홈페이지 바로가기</Button>
                 </Section>
             </Article>
             <Article>
@@ -71,7 +76,7 @@ export default function Main(){
                     <SubTitle>위키</SubTitle>
                     <h1>클릭하는 순간,<br/>당신도 햄스터 박사</h1>
                     <Content>다양한 종류의 햄스터를 알아가보세요.</Content>
-                    <Button onClick={navigateToWiki}/>
+                    <Button onClick={navigateToWiki}>홈페이지 바로가기</Button>
                 </Section>
                 <Picture src={IMAGE_WIKI}/>
             </Article>
