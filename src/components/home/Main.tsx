@@ -1,58 +1,62 @@
 import styled from "styled-components";
 import { IMAGE_COMMUNITY, IMAGE_WIKI } from "../../config";
+import { useNavigate } from "react-router-dom";
 
 interface Props{
     alignItems : string;
     textAlign : string;
 }
 
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    display: block;
+`;
+
+const Article = styled.div`
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+`;
+
+const Section = styled.div<Props>`
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    row-gap: 30px;
+    align-items: ${props => props.alignItems};
+    text-align: ${props => props.textAlign};
+`;
+
+const Picture = styled.img`
+    border-radius: 5%;
+    width: 80%;
+    aspect-ratio: 1/1;
+`;
+
+const SubTitle = styled.h2`
+    color: #72b2c6;
+`;
+
+const Content = styled.h3`
+    color: #333d4b;
+`;
+
+const Button = styled.button`
+    width: 300px;
+    height: 60px;
+`;
+
 export default function Main(){
-    const Main = styled.div`
-        width: 100%;
-        height: 100%;
-        display: block;
-    `;
-
-    const Article = styled.div`
-        width: 100%;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        place-items: center;
-    `;
-
-    const Section = styled.div<Props>`
-        width: 80%;
-        height: 80%;
-        display: flex;
-        flex-direction : column;
-        justify-content: center;
-        row-gap: 30px;
-        align-items: ${props => props.alignItems};
-        text-align: ${props => props.textAlign};
-    `;
-
-    const Picture = styled.img`
-        border-radius: 5%;
-        width: 80%;
-        aspect-ratio: 1/1;
-    `;
-
-    const SubTitle = styled.h2`
-        color: #72b2c6;
-    `;
-
-    const Content = styled.h3`
-        color: #333d4b;
-    `;
-
-    const Button = styled.button`
-        width: 300px;
-        height: 60px;
-    `;
+    const navigate = useNavigate();
+    const navigateToWiki = () => navigate("/wiki");
 
     return(
-        <Main>
+        <Wrapper>
             <Article>
                 <Picture src={IMAGE_COMMUNITY}/>
                 <Section alignItems = "flex-start" textAlign = "left">
@@ -67,10 +71,10 @@ export default function Main(){
                     <SubTitle>위키</SubTitle>
                     <h1>클릭하는 순간,<br/>당신도 햄스터 박사</h1>
                     <Content>다양한 종류의 햄스터를 알아가보세요.</Content>
-                    <Button/>
+                    <Button onClick={navigateToWiki}/>
                 </Section>
                 <Picture src={IMAGE_WIKI}/>
             </Article>
-        </Main>
+        </Wrapper>
     );
 }

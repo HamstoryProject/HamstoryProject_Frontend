@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL_SIGNUP } from "../config.ts";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 interface FormValue {
     nickName: string;
@@ -12,25 +11,79 @@ interface FormValue {
     password: string;
 };
 
+interface Props{
+    gridArea: string;
+}
+
+const Body = styled.div`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Logo = styled.h1`
+    grid-area: lg;
+`;
+
+const Button = styled.button<Props>`
+    width: 100%;
+    height: 42px;
+    grid-area: ${props => props.gridArea};
+`;
+
+// lg: logo
+// lb: login button, rb : register button
+// ie: input email, ip: input password
+// er: error message
+// fb: form button
+const Form = styled.form`
+    display: grid;
+    width: 24%;
+    height: 36%;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas:
+        "lg lg"
+        "lb rb"
+        "in in"
+        "ie ie"
+        "ip ip"
+        "er er"
+        "fb fb"
+    ;
+`;
+
+const Input = styled.input<Props>`
+    width: 100%;
+    height: 42px;
+    grid-area: ${props => props.gridArea};
+`;
+
+const Error = styled.div`
+    grid-area: er;
+`;
+
 export default function CreateAccount(){
-    const Body = styled.div`
-        width: 100%;
-        height: 100%;
-        display: grid;
-    `;
-
-    const Button = styled.button``;
-
-    const Form = styled.form``;
-
-    const Input = styled.input``;
-
-    const Error = styled.div``;
-
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<FormValue>();
     const [resError, setResError] = useState("");
+
+    const navigateTologin = () => {
+        navigate("/login");
+    };
+
+    const navigateToCreateAccount = () => {
+        navigate("/create_account");
+    };
+
+    const navigateToHome = () => {
+        navigate("/");
+    }
 
     const onSubmit = async(data : FormValue) => {
         setResError("");
@@ -58,17 +111,16 @@ export default function CreateAccount(){
 
     return(
         <Body>
-            <Link to={"/"}><h1>HAMSTORY</h1></Link>
-            <Link to={"/login"}><Button>로그인</Button></Link><Link to={"/create_account"}><Button>회원가입</Button></Link>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="nickName">닉네임</label>
-                <Input id="nickName" type="text" placeholder="hamstory" {...register("nickName", {
+                <Logo onClick={navigateToHome}>HAMSTORY</Logo>
+                <Button gridArea={"lb"} onClick={navigateTologin}>로그인</Button>
+                <Button gridArea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
+                <Input gridArea={"in"} id="nickName" type="text" placeholder="닉네임" {...register("nickName", {
                     required: "이름은 필수 입력입니다.",
                 })}
                 aria-invalid={isSubmitting ? (errors.nickName ? "true" : "false") : undefined}/>
                 {errors.nickName && <Error>{errors.nickName.message?.toString()}</Error>}
-                <label htmlFor="email">이메일</label>
-                <Input id="email" type="email" placeholder="hamstory@email.com" {...register("email", { 
+                <Input gridArea={"ie"} id="email" type="email" placeholder="이메일" {...register("email", { 
                     required: "이메일은 필수 입력입니다.",
                     pattern: {
                         value: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/,
@@ -77,8 +129,7 @@ export default function CreateAccount(){
                 })}
                 aria-invalid={isSubmitting ? (errors.email ? "true" : "false") : undefined}/>
                 {errors.email && <Error>{errors.email.message?.toString()}</Error>}
-                <label htmlFor="password">비밀번호</label>
-                <Input id="password" type="password" placeholder="************" {...register("password", {
+                <Input gridArea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password", {
                     required: "비밀번호는 필수 입력입니다.",
                     minLength: {
                         value: 8,
@@ -88,7 +139,7 @@ export default function CreateAccount(){
                 aria-invalid={isSubmitting ? (errors.password ? "true" : "false") : undefined}/>
                 {errors.password && <Error>{errors.password.message?.toString()}</Error>}
                 {resError !== "" ? <Error>{resError}</Error> : null}
-                <button type="submit" disabled={isSubmitting}>회원가입</button>
+                <Button gridArea={"fb"} type="submit" disabled={isSubmitting}>회원가입</Button>
             </Form>
         </Body>
     );

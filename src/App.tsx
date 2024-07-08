@@ -1,7 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Layout from "./components/Layout"
 import Home from "./routes/Home"
-import styled, { createGlobalStyle } from "styled-components";
+import Wiki from "./routes/Wiki"
+import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import Login from "./routes/Login";
 import CreateAccount from "./routes/CreateAccount";
@@ -12,11 +13,21 @@ import LoadingScreen from "./components/LoadingScreen";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout path="home"/>,
     children:[
       {
         path: "",
         element: <Home/>,
+      },
+    ]
+  },
+  {
+    path: "/wiki",
+    element: <Layout path="wiki"/>,
+    children:[
+      {
+        path: "",
+        element: <Wiki/>,
       },
     ]
   },
