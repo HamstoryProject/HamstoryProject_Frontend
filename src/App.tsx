@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import Layout from "./components/Layout"
+import Layout from "./components/common/Layout"
 import Home from "./routes/Home"
 import Wiki from "./routes/Wiki"
 import { createGlobalStyle } from "styled-components";
@@ -8,12 +8,12 @@ import Login from "./routes/Login";
 import CreateAccount from "./routes/CreateAccount";
 import { CookiesProvider } from 'react-cookie';
 import { useEffect, useState } from "react";
-import LoadingScreen from "./components/LoadingScreen";
+import LoadingScreen from "./components/common/LoadingScreen";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout path="home"/>,
+    element: <Layout path="home" userName={null}/>,
     children:[
       {
         path: "",
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/wiki",
-    element: <Layout path="wiki"/>,
+    element: <Layout path="wiki" userName={null}/>,
     children:[
       {
         path: "",
@@ -81,13 +81,15 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.3em;
     color: black
   }
+  hr{
+
+  }
 `;
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    //init();
     setIsLoading(false);
   }, [])
 

@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import HomeNavbar from "./menu/HomeNavbar";
+import HomeNavbar from "../menu/HomeNavbar";
 import Footer from "./Footer";
-import WikiNavBar from "./menu/WikiNavBar";
+import WikiNavBar from "../menu/WikiNavBar";
 
 interface Props{
     path : string;
+    userName : string | null;
 }
 
 const Wrapper = styled.div`
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
 export default function Layout(props : Props){
     return (
         <Wrapper>
-            {props.path === "home" ? <HomeNavbar/> : <WikiNavBar/>}
+            {props.path === "home" ? <HomeNavbar userName={props.userName}/> : <WikiNavBar/>}
             <Outlet/>
             <Footer/>
         </Wrapper>

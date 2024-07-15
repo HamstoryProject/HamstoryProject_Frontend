@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { IMAGE_COMMUNITY, IMAGE_WIKI } from "../../config";
 import { useNavigate } from "react-router-dom";
+import Button from "../button/Button";
 
 interface Props{
-    alignItems : string;
-    textAlign : string;
+    alignitems : string;
+    textalign : string;
 }
 
 const Wrapper = styled.div`
@@ -28,8 +29,8 @@ const Section = styled.div<Props>`
     flex-direction : column;
     justify-content: center;
     row-gap: 30px;
-    align-items: ${props => props.alignItems};
-    text-align: ${props => props.textAlign};
+    align-items: ${props => props.alignitems};
+    text-align: ${props => props.textalign};
 `;
 
 const Picture = styled.img`
@@ -46,15 +47,6 @@ const Content = styled.h3`
     color: #333d4b;
 `;
 
-const Button = styled.button`
-    width: 150px;
-    height: 40px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 15px;
-    background-color: #3182f6;
-`;
 
 export default function Main(){
     const navigate = useNavigate();
@@ -64,7 +56,7 @@ export default function Main(){
         <Wrapper>
             <Article>
                 <Picture src={IMAGE_COMMUNITY}/>
-                <Section alignItems = "flex-start" textAlign = "left">
+                <Section alignitems = "flex-start" textalign = "left">
                     <SubTitle>커뮤니티</SubTitle>
                     <h1>햄스터들의 다채로운 일상들을<br/>커뮤니티에서 만나보세요</h1>
                     <Content>홈페이지 이용자분들이 공유해주신<br/>사랑스러운 가족분들을 만나보실 수 있어요.</Content>
@@ -72,7 +64,7 @@ export default function Main(){
                 </Section>
             </Article>
             <Article>
-                <Section alignItems = "flex-end" textAlign = "right">
+                <Section alignitems = "flex-end" textalign = "right">
                     <SubTitle>위키</SubTitle>
                     <h1>클릭하는 순간,<br/>당신도 햄스터 박사</h1>
                     <Content>다양한 종류의 햄스터를 알아가보세요.</Content>

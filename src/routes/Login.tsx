@@ -11,7 +11,7 @@ interface FormValue{
 };
 
 interface Props{
-    gridArea: string;
+    gridarea: string;
 }
 
 const Body = styled.div`
@@ -52,13 +52,13 @@ const Logo = styled.h1`
 const Input = styled.input<Props>`
     width: 100%;
     height: 42px;
-    grid-area: ${props => props.gridArea};
+    grid-area: ${props => props.gridarea};
 `;
 
 const Button = styled.button<Props>`
     width: 100%;
     height: 42px;
-    grid-area: ${props => props.gridArea};
+    grid-area: ${props => props.gridarea};
 `;
 
 const Error = styled.div`
@@ -114,12 +114,12 @@ export default function Login(){
         <Body>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
-                <Button gridArea={"lb"} onClick={navigateTologin}>로그인</Button>
-                <Button gridArea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
-                <Input gridArea={"ie"} id="dlapd" type="email" placeholder="이메일" {...register("email")}/>
-                <Input gridArea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password")}/>
+                <Button gridarea={"lb"} onClick={navigateTologin}>로그인</Button>
+                <Button gridarea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
+                <Input gridarea={"ie"} id="dlapd" type="email" placeholder="이메일" {...register("email")}/>
+                <Input gridarea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password")}/>
                 {error !== "" ? <Error>{error}</Error> : null}
-                <Button gridArea={"fb"} type="submit" disabled={isSubmitting}>로그인</Button>
+                <Button gridarea={"fb"} type="submit" disabled={isSubmitting}>로그인</Button>
             </Form>
         </Body>
     );

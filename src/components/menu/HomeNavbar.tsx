@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ICON_GIT, ICON_INFO, ICON_MENU } from "../../config";
 import { useState } from "react";
-import DropDownMenu from "../../dropDown/DropDownMenu";
+import DropDownMenu from "../dropDownMenu/DropDownMenu";
+
+interface props{
+    userName : string | null;
+}
 
 const Menu = styled.div`
     width: 100%;
@@ -49,13 +53,18 @@ const IconNav = styled.div`
     width: 100%;
     height:100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+`;
+
+const Img = styled.img`
     svg{
         width: 45%;
         height: 45%;
-    }
+    };
 `;
-export default function Navbar(){
+
+export default function Navbar(props : props){
     const menuItems = [
         { name: "햄스토리", path: "/" },
         { name: '커뮤니티', path: '/' },
@@ -63,13 +72,7 @@ export default function Navbar(){
         { name: '도움말', path: '/' },
     ];
 
-    const iconItems = [
-        { src: ICON_GIT },
-        { src: ICON_INFO },
-        { src: ICON_MENU },
-    ];
-
-    const [openMenu, setOpenMenu] = useState(false);
+    const [view, setView] = useState(false);
 
     return(
         <Menu>
@@ -86,9 +89,10 @@ export default function Navbar(){
                 ))}
             </TextNav>
             <IconNav>
-                {iconItems.map((item, index) => (
-                    <MenuItem key={index}><img src={item.src} onClick={() => setOpenMenu(prev => !prev)}/>{openMenu && <DropDownMenu/>}</MenuItem>
-                ))}
+                <Link to={"https://github.com/HamstoryProject"}><img src={ICON_GIT}></img></Link>
+                <Img onClick={() => {setView(!view)}} src={ICON_INFO}></Img>
+                {view && <DropDownMenu userName = {props.userName}/>}
+                <Img src={ICON_MENU}></Img>
             </IconNav>
         </Menu>
     );

@@ -12,7 +12,7 @@ interface FormValue {
 };
 
 interface Props{
-    gridArea: string;
+    gridarea: string;
 }
 
 const Body = styled.div`
@@ -31,7 +31,7 @@ const Logo = styled.h1`
 const Button = styled.button<Props>`
     width: 100%;
     height: 42px;
-    grid-area: ${props => props.gridArea};
+    grid-area: ${props => props.gridarea};
 `;
 
 // lg: logo
@@ -60,7 +60,7 @@ const Form = styled.form`
 const Input = styled.input<Props>`
     width: 100%;
     height: 42px;
-    grid-area: ${props => props.gridArea};
+    grid-area: ${props => props.gridarea};
 `;
 
 const Error = styled.div`
@@ -113,14 +113,14 @@ export default function CreateAccount(){
         <Body>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
-                <Button gridArea={"lb"} onClick={navigateTologin}>로그인</Button>
-                <Button gridArea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
-                <Input gridArea={"in"} id="nickName" type="text" placeholder="닉네임" {...register("nickName", {
+                <Button gridarea={"lb"} onClick={navigateTologin}>로그인</Button>
+                <Button gridarea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
+                <Input gridarea={"in"} id="nickName" type="text" placeholder="닉네임" {...register("nickName", {
                     required: "이름은 필수 입력입니다.",
                 })}
                 aria-invalid={isSubmitting ? (errors.nickName ? "true" : "false") : undefined}/>
                 {errors.nickName && <Error>{errors.nickName.message?.toString()}</Error>}
-                <Input gridArea={"ie"} id="email" type="email" placeholder="이메일" {...register("email", { 
+                <Input gridarea={"ie"} id="email" type="email" placeholder="이메일" {...register("email", { 
                     required: "이메일은 필수 입력입니다.",
                     pattern: {
                         value: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/,
@@ -129,7 +129,7 @@ export default function CreateAccount(){
                 })}
                 aria-invalid={isSubmitting ? (errors.email ? "true" : "false") : undefined}/>
                 {errors.email && <Error>{errors.email.message?.toString()}</Error>}
-                <Input gridArea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password", {
+                <Input gridarea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password", {
                     required: "비밀번호는 필수 입력입니다.",
                     minLength: {
                         value: 8,
@@ -139,7 +139,7 @@ export default function CreateAccount(){
                 aria-invalid={isSubmitting ? (errors.password ? "true" : "false") : undefined}/>
                 {errors.password && <Error>{errors.password.message?.toString()}</Error>}
                 {resError !== "" ? <Error>{resError}</Error> : null}
-                <Button gridArea={"fb"} type="submit" disabled={isSubmitting}>회원가입</Button>
+                <Button gridarea={"fb"} type="submit" disabled={isSubmitting}>회원가입</Button>
             </Form>
         </Body>
     );
