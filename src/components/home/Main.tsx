@@ -2,11 +2,7 @@ import styled from "styled-components";
 import { IMAGE_COMMUNITY, IMAGE_WIKI } from "../../config";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
-
-interface Props{
-    alignitems : string;
-    textalign : string;
-}
+import { StyledMainSectionProps } from "../../interfaces";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -22,7 +18,7 @@ const Article = styled.div`
     place-items: center;
 `;
 
-const Section = styled.div<Props>`
+const Section = styled.div<StyledMainSectionProps>`
     width: 80%;
     height: 80%;
     display: flex;

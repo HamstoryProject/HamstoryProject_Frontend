@@ -4,16 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL_SIGNUP } from "../config.ts";
 import axios from "axios";
-
-interface FormValue {
-    nickName: string;
-    email: string;
-    password: string;
-};
-
-interface Props{
-    gridarea: string;
-}
+import { CreateAccountFormValue, StyledGridAreaProps, StyledIsCreateAccountErrorProps } from "../interfaces.ts";
 
 const Body = styled.div`
     width: 100%;
@@ -26,9 +17,11 @@ const Body = styled.div`
 
 const Logo = styled.h1`
     grid-area: lg;
+    text-align: center;
+    padding-bottom: 20px;
 `;
 
-const Button = styled.button<Props>`
+const Button = styled.button<StyledGridAreaProps>`
     width: 100%;
     height: 42px;
     grid-area: ${props => props.gridarea};
@@ -37,40 +30,51 @@ const Button = styled.button<Props>`
 // lg: logo
 // lb: login button, rb : register button
 // ie: input email, ip: input password
+// ner: nickname error message
+// ier: email error message
+// per: password error message
 // er: error message
 // fb: form button
-const Form = styled.form`
+const Form = styled.form<StyledIsCreateAccountErrorProps>`
     display: grid;
-    width: 24%;
-    height: 36%;
-    place-items: center;
+    width: 420px;
+    font-size: 14px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: auto;
+    width: 500px;
+    row-gap: 10px;
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    color: red;
     grid-template-areas:
         "lg lg"
         "lb rb"
         "in in"
+        ${props => props.isNickNameError ? '"ner ner"' : null}
         "ie ie"
+        ${props => props.isIdError ? '"ier ier"' : null}
         "ip ip"
-        "er er"
+        ${props => props.isPasswordError ? '"per per"' : null}
+        ${props => props.isError ? '"er er"' : null}
         "fb fb"
     ;
 `;
 
-const Input = styled.input<Props>`
+const Input = styled.input<StyledGridAreaProps>`
     width: 100%;
     height: 42px;
     grid-area: ${props => props.gridarea};
 `;
 
-const Error = styled.div`
-    grid-area: er;
+const Error = styled.div<StyledGridAreaProps>`
+    grid-area: ${props => props.gridarea};
 `;
 
 export default function CreateAccount(){
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<FormValue>();
+    const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<CreateAccountFormValue>();
     const [resError, setResError] = useState("");
 
     const navigateTologin = () => {
@@ -85,7 +89,7 @@ export default function CreateAccount(){
         navigate("/");
     }
 
-    const onSubmit = async(data : FormValue) => {
+    const onSubmit = async(data : CreateAccountFormValue) => {
         setResError("");
         if(isSubmitting || data.nickName === "" || data.email === "" || data.password === ""){
             return;
@@ -111,7 +115,12 @@ export default function CreateAccount(){
 
     return(
         <Body>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form 
+                isNickNameError = {errors.nickName ? true : false} 
+                isIdError = {errors.email ? true : false}
+                isPasswordError = {errors.password ? true : false}
+                isError = {resError !== "" ? true : false}
+                onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
                 <Button gridarea={"lb"} onClick={navigateTologin}>로그인</Button>
                 <Button gridarea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
@@ -119,7 +128,7 @@ export default function CreateAccount(){
                     required: "이름은 필수 입력입니다.",
                 })}
                 aria-invalid={isSubmitting ? (errors.nickName ? "true" : "false") : undefined}/>
-                {errors.nickName && <Error>{errors.nickName.message?.toString()}</Error>}
+                {errors.nickName && <Error gridarea={"ner"}>{errors.nickName.message?.toString()}</Error>}
                 <Input gridarea={"ie"} id="email" type="email" placeholder="이메일" {...register("email", { 
                     required: "이메일은 필수 입력입니다.",
                     pattern: {
@@ -128,7 +137,7 @@ export default function CreateAccount(){
                     },
                 })}
                 aria-invalid={isSubmitting ? (errors.email ? "true" : "false") : undefined}/>
-                {errors.email && <Error>{errors.email.message?.toString()}</Error>}
+                {errors.email && <Error gridarea={"ier"}>{errors.email.message?.toString()}</Error>}
                 <Input gridarea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password", {
                     required: "비밀번호는 필수 입력입니다.",
                     minLength: {
@@ -137,8 +146,8 @@ export default function CreateAccount(){
                     },
                 })}
                 aria-invalid={isSubmitting ? (errors.password ? "true" : "false") : undefined}/>
-                {errors.password && <Error>{errors.password.message?.toString()}</Error>}
-                {resError !== "" ? <Error>{resError}</Error> : null}
+                {errors.password && <Error gridarea={"per"}>{errors.password.message?.toString()}</Error>}
+                {resError !== "" ? <Error gridarea={"er"}>{resError}</Error> : null}
                 <Button gridarea={"fb"} type="submit" disabled={isSubmitting}>회원가입</Button>
             </Form>
         </Body>

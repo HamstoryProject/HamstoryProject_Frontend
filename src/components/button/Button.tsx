@@ -1,9 +1,5 @@
 import styled from "styled-components"
-
-interface ButtonProps{
-    children: React.ReactNode;
-    onClick?: () => void;
-}
+import { ButtonProps } from "../../interfaces";
 
 const StyledButton = styled.button`
     width: 24%;
@@ -13,6 +9,7 @@ const StyledButton = styled.button`
     color: white;
     font-size: 15px;
     background-color: #3182f6;
+    font-weight: 900;
 `;
 
 export default function Button({ children, onClick } : ButtonProps){

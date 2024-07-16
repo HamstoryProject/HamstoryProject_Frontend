@@ -4,15 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL_LOGIN } from "../config.ts";
 import axios from "axios";
-
-interface FormValue{
-  	email: string
-  	password: string
-};
-
-interface Props{
-    gridarea: string;
-}
+import { LoginFormValue, StyledGridAreaProps, StyledIsLoginErrorProps } from "../interfaces.ts";
 
 const Body = styled.div`
     width: 100%;
@@ -28,47 +20,58 @@ const Body = styled.div`
 // ie: input email, ip: input password
 // er: error message
 // fb: form button
-const Form = styled.form`
+const Form = styled.form<StyledIsLoginErrorProps>`
     display: grid;
-    width: 24%;
-    height: 36%;
-    place-items: center;
+    width: 500px;
+    row-gap: 10px;
+    padding: 50px;
+    font-size: 14px;
+    color: red;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
     grid-template-areas:
         "lg lg"
         "lb rb"
         "ie ie"
         "ip ip"
-        "er er"
+        ${props => props.isError ? '"er er"' : null}
         "fb fb"
     ;
 `;
 
 const Logo = styled.h1`
     grid-area: lg;
+    text-align: center;
+    padding-bottom: 20px;
 `;
 
-const Input = styled.input<Props>`
+const Input = styled.input<StyledGridAreaProps>`
     width: 100%;
     height: 42px;
     grid-area: ${props => props.gridarea};
 `;
 
-const Button = styled.button<Props>`
+const Button = styled.button<StyledGridAreaProps>`
     width: 100%;
     height: 42px;
+    border: none;
     grid-area: ${props => props.gridarea};
+    background-color: #3182f6;
+    color: white;
+    font-weight: 900;
 `;
 
 const Error = styled.div`
     grid-area: er;
+
 `;
 
 export default function Login(){
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValue>();
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm<LoginFormValue>();
     const [error, setError] = useState("");
 
     const navigateTologin = () => {
@@ -83,7 +86,7 @@ export default function Login(){
         navigate("/");
     }
 
-    const onSubmit : SubmitHandler<FormValue> = async(data) => {
+    const onSubmit : SubmitHandler<LoginFormValue> = async(data) => {
         setError("");
         if(isSubmitting || data.email === "" || data.password === ""){
             return;
@@ -112,7 +115,7 @@ export default function Login(){
 
     return(
         <Body>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form isError = {error != ""} onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
                 <Button gridarea={"lb"} onClick={navigateTologin}>로그인</Button>
                 <Button gridarea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
@@ -121,6 +124,7 @@ export default function Login(){
                 {error !== "" ? <Error>{error}</Error> : null}
                 <Button gridarea={"fb"} type="submit" disabled={isSubmitting}>로그인</Button>
             </Form>
+            <p>아이디 찾기 | 비밀번호 찾기</p>
         </Body>
     );
 }
