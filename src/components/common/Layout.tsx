@@ -6,7 +6,6 @@ import WikiNavBar from "../menu/WikiNavBar";
 
 interface Props{
     path : string;
-    userName : string | null;
 }
 
 const Wrapper = styled.div`
@@ -18,7 +17,7 @@ const Wrapper = styled.div`
 export default function Layout(props : Props){
     return (
         <Wrapper>
-            {props.path === "home" ? <HomeNavbar userName={props.userName}/> : <WikiNavBar/>}
+            {props.path === "home" ? <HomeNavbar/> : <WikiNavBar/>}
             <Outlet/>
             <Footer/>
         </Wrapper>

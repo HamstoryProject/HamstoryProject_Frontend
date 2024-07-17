@@ -32,7 +32,11 @@ export interface StyledMainSectionProps {
 }
 
 // Button.tsx interface
-interface ButtonProps{
+export interface ButtonProps{
     children: React.ReactNode;
     onClick?: () => void;
+}
+
+export interface userNameProps{
+    userName : string | null
 }
