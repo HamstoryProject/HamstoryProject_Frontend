@@ -1,8 +1,5 @@
 import styled from "styled-components";
-
-interface Props{
-    userName : string;
-}
+import { userNameProps } from "../../interfaces";
 
 const Contents = styled.li`
     margin: 4px 4px;
@@ -12,7 +9,7 @@ const Contents = styled.li`
     }
 `;
 
-export default function LoggedInMenu(props : Props){
+export default function LoggedInMenu(props : userNameProps){
     return(
         <>
             <Contents>{props.userName}님 환영합니다.</Contents>

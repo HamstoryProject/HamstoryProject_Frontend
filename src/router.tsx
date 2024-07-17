@@ -4,11 +4,12 @@ import CreateAccount from "./routes/CreateAccount";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Wiki from "./routes/Wiki";
+import { PATH_CREATE_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_WIKI } from "./config";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Layout path="home" userName={null} />,
+    path: PATH_HOME,
+    element: <Layout path="home"/>,
     children: [
       {
         path: "",
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/wiki",
-    element: <Layout path="wiki" userName={null} />,
+    path: PATH_WIKI,
+    element: <Layout path="wiki"/>,
     children: [
       {
         path: "",
@@ -27,11 +28,11 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/login",
+    path: PATH_LOGIN,
     element: <Login />,
   },
   {
-    path: "/create_account",
+    path: PATH_CREATE_ACCOUNT,
     element: <CreateAccount />,
   }
 ]);

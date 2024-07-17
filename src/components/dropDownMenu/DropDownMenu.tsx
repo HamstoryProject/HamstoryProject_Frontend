@@ -1,18 +1,15 @@
 import styled from "styled-components";
 import LoggedInMenu from "./LoggedInMenu";
 import LoggedOutMenu from "./LoggedOutMenu";
+import { userNameProps } from "../../interfaces";
 
-interface Props{
-    userName : string | null;
-}
-
-const Body = styled.ul`
+const Wrapper = styled.ul`
     width: 220px;
     height: auto;
     display: flex;
     position: absolute;
     flex-direction: column;
-    top: 100px;
+    top: 80px;
     background-color: white;
     border: 1px solid gray;
     text-align: left;
@@ -20,10 +17,10 @@ const Body = styled.ul`
     word-break: break-word;
 `;
 
-export default function DropDownMenu(props : Props){
+export default function DropDownMenu(props : userNameProps){
     return(
-        <Body>
+        <Wrapper>
             {props.userName ? <LoggedInMenu userName = {props.userName}/> : <LoggedOutMenu/>}
-        </Body>
+        </Wrapper>
     );
 }

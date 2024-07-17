@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { URL_LOGIN } from "../config.ts";
 import axios from "axios";
 import { LoginFormValue, StyledGridAreaProps, StyledIsLoginErrorProps } from "../interfaces.ts";
+import { useCookies } from 'react-cookie';
 
 const Body = styled.div`
     width: 100%;
@@ -72,6 +73,7 @@ export default function Login(){
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { isSubmitting } } = useForm<LoginFormValue>();
+    const [cookies, setCookie] = useCookies(['id']);
     const [error, setError] = useState("");
 
     const navigateTologin = () => {
@@ -96,16 +98,17 @@ export default function Login(){
                 const res = await axios.post(URL_LOGIN, {
                     email : data.email,
                     pw : data.password,
-                }, 
-                {
-                    withCredentials: true
-                });
-
-                if(res.data === ''){
-                    setError("아이디 또는 비밀번호가 일치하지 않습니다.")
-                    return;
-                }
-                navigate("/");
+                })
+                .then((res) => {
+                    if(res.data == ""){
+                        setError("아이디 또는 비밀번호가 일치하지 않습니다.");
+                        return;
+                    }
+                    else{
+                        setCookie('id', res.data);
+                        navigate("/");
+                    }
+                })
             }
             catch(err){
                 setError("로그인 통신중 에러가 발생하였습니다. 잠시후 다시 시도해보시길 바랍니다.");

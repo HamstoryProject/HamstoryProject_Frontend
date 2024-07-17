@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ICON_GIT, ICON_INFO, ICON_MENU } from "../../config";
-import { useState } from "react";
 import DropDownMenu from "../dropDownMenu/DropDownMenu";
-
-interface props{
-    userName : string | null;
-}
+import { PATH_HOME, PATH_WIKI } from "../../config";
+import { useEffect, useState } from "react";
+import { ICON_INFO, URL_INFO } from "../../config";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 const Menu = styled.div`
     width: 100%;
@@ -49,30 +48,65 @@ const ItemText = styled.div`
     color: black;
 `;
 
-const IconNav = styled.div`
+const ProfileNav = styled.div`
     width: 100%;
-    height:100%;
+    height: 100%;
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(3, 1fr);
+`;
+
+const SectionProfile = styled.div`
+    width: auto;
+    height: auto;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    cursor: pointer;
 `;
 
 const Img = styled.img`
-    svg{
-        width: 45%;
-        height: 45%;
-    };
+    width: 30px;
+    height: 30px;
 `;
 
-export default function Navbar(props : props){
+const Text = styled.h3`
+    font-size: 16px;
+    font-weight: 900;
+`;
+
+export default function Navbar(){
     const menuItems = [
-        { name: "햄스토리", path: "/" },
-        { name: '커뮤니티', path: '/' },
-        { name: '위키', path: '/wiki' },
-        { name: '도움말', path: '/' },
+        { name: "햄스토리", path: PATH_HOME },
+        { name: '커뮤니티', path: PATH_HOME },
+        { name: '위키', path: PATH_WIKI },
+        { name: '도움말', path: PATH_HOME },
     ];
 
+    const [cookies, setCookie, removeCookie] = useCookies(['id']);
+    const [userName, setUserName] = useState(null);
     const [view, setView] = useState(false);
+
+    const authCheck = () => {
+        const token = cookies.id;
+        axios.get(URL_INFO, {
+            headers: {
+                "content-type": "application/json",
+                "Authorization": "Bearer " + token,
+            }
+        })
+        .then((res) => {
+            setUserName(res.data.memberName);
+        })
+        .catch(() => {
+            removeCookie('id');
+        })
+    }
+
+    useEffect(() => {
+        authCheck();
+    }, [])
 
     return(
         <Menu>
@@ -88,12 +122,13 @@ export default function Navbar(props : props){
                     </MenuItem></Link>
                 ))}
             </TextNav>
-            <IconNav>
-                <Link to={"https://github.com/HamstoryProject"}><img src={ICON_GIT}></img></Link>
-                <Img onClick={() => {setView(!view)}} src={ICON_INFO}></Img>
-                {view && <DropDownMenu userName = {props.userName}/>}
-                <Img src={ICON_MENU}></Img>
-            </IconNav>
+            <ProfileNav>
+                <SectionProfile onClick={() => {setView(!view)}}>
+                    <Img src={ICON_INFO}/>
+                    <Text>{userName}</Text>
+                </SectionProfile>
+                {view && <DropDownMenu userName={userName}/>}
+            </ProfileNav>
         </Menu>
     );
 }
