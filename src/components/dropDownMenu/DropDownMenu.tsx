@@ -3,18 +3,26 @@ import LoggedInMenu from "./LoggedInMenu";
 import LoggedOutMenu from "./LoggedOutMenu";
 import { userNameProps } from "../../interfaces";
 
+// pic: picture
+// nm: name
+// btn: button
 const Wrapper = styled.ul`
-    width: 220px;
+    width: 280px;
     height: auto;
-    display: flex;
+    display: grid;
     position: absolute;
-    flex-direction: column;
+    place-items: center;
     top: 80px;
     background-color: white;
-    border: 1px solid gray;
-    text-align: left;
+    border: 1px solid #c5ccd2;
+    border-radius: 5px;
     font-size: 14px;
     word-break: break-word;
+    z-index: 1000;
+    grid-template-areas:
+        "pic"
+        "nm"
+        "btn";
 `;
 
 export default function DropDownMenu(props : userNameProps){

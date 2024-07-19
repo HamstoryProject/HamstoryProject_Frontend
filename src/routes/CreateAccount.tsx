@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL_SIGNUP } from "../config.ts";
 import axios from "axios";
-import { CreateAccountFormValue, StyledGridAreaProps, StyledIsCreateAccountErrorProps } from "../interfaces.ts";
+import { CreateAccountFormValue, StyledButtonProps, StyledGridAreaProps, StyledIsCreateAccountErrorProps } from "../interfaces.ts";
 
 const Body = styled.div`
     width: 100%;
@@ -18,13 +18,18 @@ const Body = styled.div`
 const Logo = styled.h1`
     grid-area: lg;
     text-align: center;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
 `;
 
-const Button = styled.button<StyledGridAreaProps>`
+const Button = styled.button<StyledButtonProps>`
     width: 100%;
     height: 42px;
+    border: none;
     grid-area: ${props => props.gridarea};
+    background-color: ${props => props.backgroundcolor};
+    color: white;
+    font-weight: 900;
 `;
 
 // lg: logo
@@ -42,10 +47,10 @@ const Form = styled.form<StyledIsCreateAccountErrorProps>`
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     width: 500px;
-    row-gap: 10px;
+    row-gap: 15px;
     padding: 50px;
     border-radius: 10px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #c5ccd2;
     color: red;
     grid-template-areas:
         "lg lg"
@@ -69,6 +74,8 @@ const Input = styled.input<StyledGridAreaProps>`
 
 const Error = styled.div<StyledGridAreaProps>`
     grid-area: ${props => props.gridarea};
+    margin-top: -10px;
+    margin-bottom: -5px;
 `;
 
 export default function CreateAccount(){
@@ -122,8 +129,8 @@ export default function CreateAccount(){
                 isError = {resError !== "" ? true : false}
                 onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
-                <Button gridarea={"lb"} onClick={navigateTologin}>로그인</Button>
-                <Button gridarea={"rb"} onClick={navigateToCreateAccount}>회원가입</Button>
+                <Button gridarea={"lb"} backgroundcolor={"#90beff"} onClick={navigateTologin}>로그인</Button>
+                <Button gridarea={"rb"} backgroundcolor={"#3182f6"} onClick={navigateToCreateAccount}>회원가입</Button>
                 <Input gridarea={"in"} id="nickName" type="text" placeholder="닉네임" {...register("nickName", {
                     required: "이름은 필수 입력입니다.",
                 })}
@@ -148,7 +155,7 @@ export default function CreateAccount(){
                 aria-invalid={isSubmitting ? (errors.password ? "true" : "false") : undefined}/>
                 {errors.password && <Error gridarea={"per"}>{errors.password.message?.toString()}</Error>}
                 {resError !== "" ? <Error gridarea={"er"}>{resError}</Error> : null}
-                <Button gridarea={"fb"} type="submit" disabled={isSubmitting}>회원가입</Button>
+                <Button gridarea={"fb"} backgroundcolor={"#3182f6"} type="submit" disabled={isSubmitting}>회원가입</Button>
             </Form>
         </Body>
     );

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import DropDownMenu from "../dropDownMenu/DropDownMenu";
-import { PATH_HOME, PATH_WIKI } from "../../config";
+import { ICON_INFO, IMAGE_COMMUNITY, PATH_HOME, PATH_WIKI } from "../../config";
 import { useEffect, useState } from "react";
-import { ICON_INFO, URL_INFO } from "../../config";
+import { URL_INFO } from "../../config";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
@@ -17,7 +17,7 @@ const Menu = styled.div`
     top: 0;
     z-index: 1000;
     background-color: white;
-    box-shadow: 0 1px rgba(0,0,0,.1), 0 -1px rgba(0,0,0,.1);
+    border-bottom: 1px solid #c5ccd2;
 `;
 
 const MenuItem = styled.div`
@@ -67,6 +67,7 @@ const SectionProfile = styled.div`
 `;
 
 const Img = styled.img`
+    border-radius: 100%;
     width: 30px;
     height: 30px;
 `;
@@ -124,8 +125,7 @@ export default function Navbar(){
             </TextNav>
             <ProfileNav>
                 <SectionProfile onClick={() => {setView(!view)}}>
-                    <Img src={ICON_INFO}/>
-                    <Text>{userName}</Text>
+                    {userName ? <><Img src={IMAGE_COMMUNITY}/><Text>{userName}</Text></> : <><Img src={ICON_INFO}/><Text>Guest</Text></>}
                 </SectionProfile>
                 {view && <DropDownMenu userName={userName}/>}
             </ProfileNav>
