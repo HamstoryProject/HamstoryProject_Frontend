@@ -4,7 +4,8 @@ import CreateAccount from "./routes/CreateAccount";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Wiki from "./routes/Wiki";
-import { PATH_CREATE_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_WIKI } from "./config";
+import { PATH_COMMUNITY, PATH_CREATE_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_WIKI } from "./config";
+import Community from "./components/community/Community";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,16 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Wiki />,
+      },
+    ]
+  },
+  {
+    path: PATH_COMMUNITY,
+    element: <Layout path="community"/>,
+    children: [
+      {
+        path: "",
+        element: <Community/>,
       },
     ]
   },

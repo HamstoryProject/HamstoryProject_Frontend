@@ -19,5 +19,6 @@ export const URL_POST_ONE_BOARD = "http://localhost:8080/boards/";
 // path
 export const PATH_HOME = "/"
 export const PATH_WIKI = "/wiki"
+export const PATH_COMMUNITY = "/community"
 export const PATH_LOGIN = "/login"
 export const PATH_CREATE_ACCOUNT = "/create_account"

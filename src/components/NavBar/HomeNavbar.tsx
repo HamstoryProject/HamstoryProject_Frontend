@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import DropDownMenu from "../dropDownMenu/DropDownMenu";
-import { ICON_INFO, IMAGE_COMMUNITY, PATH_HOME, PATH_WIKI } from "../../config";
+import { ICON_INFO, IMAGE_COMMUNITY, PATH_COMMUNITY, PATH_HOME, PATH_WIKI } from "../../config";
 import { useEffect, useState } from "react";
 import { URL_INFO } from "../../config";
 import { useCookies } from "react-cookie";
@@ -77,10 +77,10 @@ const Text = styled.h3`
     font-weight: 900;
 `;
 
-export default function Navbar(){
+export default function HomeNavbar(){
     const menuItems = [
         { name: "햄스토리", path: PATH_HOME },
-        { name: '커뮤니티', path: PATH_HOME },
+        { name: '커뮤니티', path: PATH_COMMUNITY },
         { name: '위키', path: PATH_WIKI },
         { name: '도움말', path: PATH_HOME },
     ];
