@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import HomeNavbar from "../headers/HomeNavbar";
+import HomeNavbar from "../NavBar/HomeNavbar";
 import Footer from "./Footer";
-import WikiNavBar from "../headers/WikiNavBar";
+import WikiNavBar from "../NavBar/WikiNavBar";
 
 interface Props{
     path : string;
