@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ICON_INFORMATION, ICON_LIKE, IMAGE_COMMUNITY } from "../../config";
+import { ICONS, IMAGES } from "../../config";
 
 const Wrapper = styled.li`
     width: 100%;
@@ -84,11 +84,11 @@ export default function Contents(){
     return(
         <Wrapper>
             <SectionLike>
-                <Icon src={ICON_LIKE}/>
+                <Icon src={ICONS.LIKE}/>
                 <IconTxt>217</IconTxt>
             </SectionLike>
             <SectionImg>
-                <Image src={IMAGE_COMMUNITY}/>
+                <Image src={IMAGES.COMMUNITY}/>
             </SectionImg>
             <SectionMethods>
                 <ArticleTitle>
@@ -96,7 +96,7 @@ export default function Contents(){
                     <Comment>{"[112]"}</Comment>
                 </ArticleTitle>
                 <ArticleDetails>
-                    <Icon src={ICON_INFORMATION}/>
+                    <Icon src={ICONS.INFORMATION}/>
                     <DetailTxt>정보</DetailTxt>
                     <DetailTxt>&middot;</DetailTxt>
                     <DetailTxt>24분전</DetailTxt>

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 export default function Layout(props : Props){
     return (
         <Wrapper>
-            {props.path === "home" || props.path === "community" ? <HomeNavbar/> : <WikiNavBar/>}
+            {props.path === "home" ? <HomeNavbar/> : <WikiNavBar/>}
             <Outlet/>
             <Footer/>
         </Wrapper>

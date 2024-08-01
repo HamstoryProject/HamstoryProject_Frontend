@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL_LOGIN } from "../config.ts";
+import { API_URLS } from "../config.ts";
 import axios from "axios";
 import { LoginFormValue, StyledButtonProps, StyledGridAreaProps, StyledIsLoginErrorProps } from "../interfaces.ts";
 import { useCookies } from 'react-cookie';
@@ -97,7 +97,7 @@ export default function Login(){
         }
         else{
             try{
-                const res = await axios.post(URL_LOGIN, {
+                const res = await axios.post(API_URLS.LOGIN, {
                     email : data.email,
                     pw : data.password,
                 })

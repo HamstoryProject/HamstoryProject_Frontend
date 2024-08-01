@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledBorderRadiusProps, userNameProps } from "../../interfaces";
 import { useCookies } from "react-cookie";
-import { IMAGE_COMMUNITY } from "../../config";
+import { IMAGES } from "../../config";
 
 const Container = styled.div`
     grid-area: pic;
@@ -56,7 +56,7 @@ export default function LoggedInMenu(props : userNameProps){
     return(
         <>
             <Container>
-                <Image src={IMAGE_COMMUNITY}></Image>
+                <Image src={IMAGES.COMMUNITY}></Image>
             </Container>
             <Name>{props.userName}</Name>
             <SectionButton>

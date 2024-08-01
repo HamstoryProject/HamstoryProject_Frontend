@@ -1,26 +1,46 @@
+// define the constant value
+// direction
+const ICON_DIRECTION = "/images/icon";
+const PICTURE_DIRECTION = "/images/picture";
+const FONT_DIRECTION = "/fonts";
+// serverAddress
+export const SERVER_ADDRESS = "http://localhost:8080";
+
 // iconPath
-export const ICON_TO_UNDER = "public/images/icon/toUnder.png";
-export const ICON_GIT = "public/images/icon/git.png";
-export const ICON_INFO = "public/images/icon/info.png";
-export const ICON_MENU = "public/images/icon/menu.png";
-export const ICON_LIKE = "public/images/icon/like.png";
-export const ICON_INFORMATION = "public/images/icon/information.png";
+export const ICONS = {
+    TO_UNDER : `${ICON_DIRECTION}/toUnder.png`,
+    GIT : `${ICON_DIRECTION}/git.png`,
+    PROFILE : `${ICON_DIRECTION}/profile.png`,
+    MENU : `${ICON_DIRECTION}/menu.png`,
+    LIKE : `${ICON_DIRECTION}/like.png`,
+    INFORMATION : `${ICON_DIRECTION}/information.png`,
+};
 
 // picturePath
-export const IMAGE_COMMUNITY = "public/images/picture/community.png";
-export const IMAGE_WIKI = "public/images/picture/wiki.png";
+export const IMAGES = {
+    COMMUNITY : `${PICTURE_DIRECTION}/community.png`,
+    WIKI : `${PICTURE_DIRECTION}/wiki.png`,
+};
 
-// url
-export const SERVER_ADDRESS = "http://localhost:8080";
-export const URL_LOGIN = "http://localhost:8080/members/login";
-export const URL_SIGNUP = "http://localhost:8080/members/create";
-export const URL_INFO = "http://localhost:8080/members";
-export const URL_GET_BOARD = "http://localhost:8080/boards";
-export const URL_POST_ONE_BOARD = "http://localhost:8080/boards/";
+// fontPath
+export const FONTS = {
+    NOTOSANS_KR : `${FONT_DIRECTION}/NotoSansKR-Medium.otf`,
+};
 
-// path
-export const PATH_HOME = "/"
-export const PATH_WIKI = "/wiki"
-export const PATH_COMMUNITY = "/community"
-export const PATH_LOGIN = "/login"
-export const PATH_CREATE_ACCOUNT = "/create_account"
+// api url
+export const API_URLS = {
+    LOGIN : `${SERVER_ADDRESS}/members/login`,
+    SIGNUP : `${SERVER_ADDRESS}/members/create`,
+    INFO : `${SERVER_ADDRESS}/members`,
+    GET_BOARD : `${SERVER_ADDRESS}/boards`,
+    POST_ONE_BOARD : `${SERVER_ADDRESS}/boards/`,
+};
+
+// route url
+export const ROUTE_URLS = {
+    HOME : "/",
+    WIKI : "/wiki",
+    COMMUNITY : "/community",
+    LOGIN : "/login",
+    CREATE_ACCOUNT : "/create_account",
+};

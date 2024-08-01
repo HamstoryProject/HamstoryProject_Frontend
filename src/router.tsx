@@ -1,25 +1,35 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Layout from "./components/common/Layout";
 import CreateAccount from "./routes/CreateAccount";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Wiki from "./routes/Wiki";
-import { PATH_COMMUNITY, PATH_CREATE_ACCOUNT, PATH_HOME, PATH_LOGIN, PATH_WIKI } from "./config";
+import { ROUTE_URLS } from "./config";
 import Community from "./components/community/Community";
 
 const router = createBrowserRouter([
   {
-    path: PATH_HOME,
+    path: ROUTE_URLS.HOME,
     element: <Layout path="home"/>,
     children: [
       {
         path: "",
         element: <Home />,
       },
+      {
+        path: ROUTE_URLS.COMMUNITY,
+        element: <Community/>,
+        children: [
+          {
+            path: "best",
+            element: <Community/>,
+          }
+        ]
+      },
     ]
   },
   {
-    path: PATH_WIKI,
+    path: ROUTE_URLS.WIKI,
     element: <Layout path="wiki"/>,
     children: [
       {
@@ -29,21 +39,11 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: PATH_COMMUNITY,
-    element: <Layout path="community"/>,
-    children: [
-      {
-        path: "",
-        element: <Community/>,
-      },
-    ]
-  },
-  {
-    path: PATH_LOGIN,
+    path: ROUTE_URLS.LOGIN,
     element: <Login />,
   },
   {
-    path: PATH_CREATE_ACCOUNT,
+    path: ROUTE_URLS.CREATE_ACCOUNT,
     element: <CreateAccount />,
   }
 ]);

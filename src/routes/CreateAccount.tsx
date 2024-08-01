@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL_SIGNUP } from "../config.ts";
+import { API_URLS } from "../config.ts";
 import axios from "axios";
 import { CreateAccountFormValue, StyledButtonProps, StyledGridAreaProps, StyledIsCreateAccountErrorProps } from "../interfaces.ts";
 
@@ -111,7 +111,7 @@ export default function CreateAccount(){
                 })], {
                     type: "application/json"
                 }));
-                await axios.post(URL_SIGNUP, formData);
+                await axios.post(API_URLS.SIGNUP, formData);
                 navigate("/");
             }
             catch(err){

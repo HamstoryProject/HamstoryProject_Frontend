@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import DropDownMenu from "../dropDownMenu/DropDownMenu";
-import { ICON_INFO, IMAGE_COMMUNITY, PATH_COMMUNITY, PATH_HOME, PATH_WIKI } from "../../config";
+import { ICONS, IMAGES, ROUTE_URLS, API_URLS } from "../../config";
 import { useEffect, useState } from "react";
-import { URL_INFO } from "../../config";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
@@ -79,10 +78,10 @@ const Text = styled.h3`
 
 export default function HomeNavbar(){
     const menuItems = [
-        { name: "햄스토리", path: PATH_HOME },
-        { name: '커뮤니티', path: PATH_COMMUNITY },
-        { name: '위키', path: PATH_WIKI },
-        { name: '도움말', path: PATH_HOME },
+        { name: "햄스토리", path: ROUTE_URLS.HOME },
+        { name: '커뮤니티', path: ROUTE_URLS.COMMUNITY },
+        { name: '위키', path: ROUTE_URLS.WIKI },
+        { name: '도움말', path: ROUTE_URLS.HOME },
     ];
 
     const [cookies, setCookie, removeCookie] = useCookies(['id']);
@@ -91,7 +90,7 @@ export default function HomeNavbar(){
 
     const authCheck = () => {
         const token = cookies.id;
-        axios.get(URL_INFO, {
+        axios.get(API_URLS.INFO, {
             headers: {
                 "content-type": "application/json",
                 "Authorization": "Bearer " + token,
@@ -125,7 +124,7 @@ export default function HomeNavbar(){
             </TextNav>
             <ProfileNav>
                 <SectionProfile onClick={() => {setView(!view)}}>
-                    {userName ? <><Img src={IMAGE_COMMUNITY}/><Text>{userName}</Text></> : <><Img src={ICON_INFO}/><Text>Guest</Text></>}
+                    {userName ? <><Img src={IMAGES.COMMUNITY}/><Text>{userName}</Text></> : <><Img src={ICONS.PROFILE}/><Text>Guest</Text></>}
                 </SectionProfile>
                 {view && <DropDownMenu userName={userName}/>}
             </ProfileNav>

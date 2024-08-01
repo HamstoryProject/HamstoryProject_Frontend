@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { ICON_INFO } from "../../config";
+import { ICONS } from "../../config";
 
 const Container = styled.div`
     grid-area: pic;
@@ -45,7 +45,7 @@ export default function LoggedOutMenu(){
     return(
         <>  
             <Container>
-                <Image src={ICON_INFO}></Image>
+                <Image src={ICONS.PROFILE}></Image>
             </Container>
             <Name>Guest</Name>
             <Button onClick={goToLogin}>로그인</Button>

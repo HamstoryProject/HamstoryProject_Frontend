@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IMAGE_COMMUNITY, IMAGE_WIKI } from "../../config";
+import { IMAGES } from "../../config";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import { StyledMainSectionProps } from "../../interfaces";
@@ -51,7 +51,7 @@ export default function Main(){
     return(
         <Wrapper>
             <Article>
-                <Picture src={IMAGE_COMMUNITY}/>
+                <Picture src={IMAGES.COMMUNITY}/>
                 <Section alignitems = "flex-start" textalign = "left">
                     <SubTitle>커뮤니티</SubTitle>
                     <h1>햄스터들의 다채로운 일상들을<br/>커뮤니티에서 만나보세요</h1>
@@ -66,7 +66,7 @@ export default function Main(){
                     <Content>다양한 종류의 햄스터를 알아가보세요.</Content>
                     <Button onClick={navigateToWiki}>홈페이지 바로가기</Button>
                 </Section>
-                <Picture src={IMAGE_WIKI}/>
+                <Picture src={IMAGES.WIKI}/>
             </Article>
         </Wrapper>
     );
