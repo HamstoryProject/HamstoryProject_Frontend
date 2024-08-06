@@ -76,7 +76,7 @@ const Text = styled.h3`
     font-weight: 900;
 `;
 
-export default function HomeNavbar(){
+export default function HomeHeader(){
     const menuItems = [
         { name: "햄스토리", path: ROUTE_URLS.HOME },
         { name: '커뮤니티', path: ROUTE_URLS.COMMUNITY },

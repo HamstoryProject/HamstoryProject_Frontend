@@ -77,9 +77,6 @@ const ArticleDetails = styled.article`
     font-size: 14px;
 `;
 
-const DetailTxt = styled.span`
-`;
-
 export default function Contents(){
     return(
         <Wrapper>
@@ -97,11 +94,11 @@ export default function Contents(){
                 </ArticleTitle>
                 <ArticleDetails>
                     <Icon src={ICONS.INFORMATION}/>
-                    <DetailTxt>정보</DetailTxt>
-                    <DetailTxt>&middot;</DetailTxt>
-                    <DetailTxt>24분전</DetailTxt>
-                    <DetailTxt>&middot;</DetailTxt>
-                    <DetailTxt>가루멘탈</DetailTxt>
+                    <span>정보</span>
+                    <span>&middot;</span>
+                    <span>24분전</span>
+                    <span>&middot;</span>
+                    <span>가루멘탈</span>
                 </ArticleDetails>
             </SectionMethods>
         </Wrapper>

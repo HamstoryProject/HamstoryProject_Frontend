@@ -41,6 +41,10 @@ export const ROUTE_URLS = {
     HOME : "/",
     WIKI : "/wiki",
     COMMUNITY : "/community",
+    BEST : "/community/best",
+    FREE : "/community/free",
+    PICTURE : "/community/picture",
+    INFO : "/community/info",
     LOGIN : "/login",
     CREATE_ACCOUNT : "/create_account",
 };

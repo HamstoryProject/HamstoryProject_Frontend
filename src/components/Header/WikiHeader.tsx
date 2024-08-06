@@ -22,7 +22,7 @@ const LogoText = styled.p`
     font-weight: 900;
     color: black;
 `;
-export default function WikiNavBar(){
+export default function WikiHeader(){
     const navigate = useNavigate();
     const navigateToHome = () => navigate("/");
     return(
