@@ -29,11 +29,11 @@ const SectionFunction = styled.div`
     height: 100%;
     align-items: center;
     justify-content: flex-end;
-    column-gap: 10px;
+    column-gap: 7px;
 `;
 
 const Button = styled.button<Props>`
-    width: 80px;
+    width: 70px;
     height: 35px;
     border: 1px solid #c5ccd2;
     background-color: ${props => props.backgroundcolor};
@@ -41,9 +41,18 @@ const Button = styled.button<Props>`
     font-weight: 900;
 `;
 
-const Input = styled.input`
-    width: 220px;
+const ButtonInput = styled.button<Props>`
+    width: 90px;
     height: 35px;
+    border: 1px solid #c5ccd2;
+    background-color: ${props => props.backgroundcolor};
+    color: ${props => props.color};
+    font-weight: 900;
+`;
+
+const Text = styled.h2`
+    font-weight: 900;
+    letter-spacing: 1px;
 `;
 
 export default function CommunityHeader(){
@@ -60,19 +69,19 @@ export default function CommunityHeader(){
     return(
         <Header>
             <SectionCategory>
+                <Text>자유게시판</Text>
+            </SectionCategory>
+            <SectionFunction>
                 {categories.map((category, index) => (
                     <Button 
                         key={index} onClick={() => navigate(category.path)} 
-                        backgroundcolor={location.pathname === category.path ? "#3182f6" : "white"} 
-                        color={location.pathname === category.path ? "white" : "black"}
+                        backgroundcolor={location.pathname === category.path ? "white" : "white"} 
+                        color={location.pathname === category.path ? "black" : "black"}
                     >
                         {category.label}
                     </Button>
                 ))}
-            </SectionCategory>
-            <SectionFunction>
-                <Input/>
-                <Button onClick={() => navigate("/community/write")} backgroundcolor={"#17b75e"} color={"white"}>글쓰기</Button>
+                <ButtonInput onClick={() => navigate("/community/write")} backgroundcolor={"#17b75e"} color={"white"}>글쓰기</ButtonInput>
             </SectionFunction>
         </Header>
     );

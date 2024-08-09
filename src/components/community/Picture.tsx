@@ -8,7 +8,7 @@ const Body = styled.div`
     display: flex;
     margin-top: 100px;
     justify-content: center;
-    background-color: #f5f6f7;
+    background-color: white;
 `;
 
 const Wrapper = styled.div`

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Contents from "./Contents";
 import CommunityHeader from "../Header/CommunityHeader";
+import axios from "axios";
+import { API_URLS } from "../../config";
+import { useEffect, useState } from "react";
 
 const Body = styled.div`
     width: 100%;
@@ -8,7 +11,7 @@ const Body = styled.div`
     display: flex;
     margin-top: 100px;
     justify-content: center;
-    background-color: #f5f6f7;
+    background-color: white;
 `;
 
 const Wrapper = styled.div`
@@ -25,6 +28,18 @@ const Main = styled.ul`
 `;
 
 export default function Free(){
+    const [boardList, setBoardList] = useState(null);
+    const getBoardList = async () => {
+        const res = await axios.get(API_URLS.GET_BOARD);
+        setBoardList(res.data);
+    }
+
+    console.log(boardList)
+    
+    useEffect(() => {
+        getBoardList();
+    }, []);
+
     return(
         <Body>
             <Wrapper>
