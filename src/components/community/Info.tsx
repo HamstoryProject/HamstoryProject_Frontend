@@ -30,7 +30,7 @@ export default function Info() {
             <Wrapper>
                 <CommunityHeader/>
                 <Main>
-                    <Contents/>
+                    <></>
                 </Main>
             </Wrapper>
         </Body>
