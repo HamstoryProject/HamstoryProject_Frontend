@@ -30,7 +30,7 @@ export default function Picture() {
             <Wrapper>
                 <CommunityHeader/>
                 <Main>
-                    <Contents/>
+                    <></>
                 </Main>
             </Wrapper>
         </Body>

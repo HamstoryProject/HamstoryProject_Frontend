@@ -25,12 +25,13 @@ const Main = styled.ul`
 `;
 
 export default function Best(){
+    
     return(
         <Body>
             <Wrapper>
                 <CommunityHeader/>
                 <Main>
-                    <Contents/>
+                    <></>
                 </Main>
             </Wrapper>
         </Body>

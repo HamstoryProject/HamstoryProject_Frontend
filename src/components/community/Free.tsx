@@ -4,6 +4,7 @@ import CommunityHeader from "../Header/CommunityHeader";
 import axios from "axios";
 import { API_URLS } from "../../config";
 import { useEffect, useState } from "react";
+import CommunityFooter from "./CommunityFooter";
 
 const Body = styled.div`
     width: 100%;
@@ -24,29 +25,45 @@ const Wrapper = styled.div`
 const Main = styled.ul`
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #c5ccd2;
+    display:grid;
+    row-gap: 20px;
 `;
 
 export default function Free(){
-    const [boardList, setBoardList] = useState(null);
-    const getBoardList = async () => {
-        const res = await axios.get(API_URLS.GET_BOARD);
-        setBoardList(res.data);
-    }
+    const [boardList, setBoardList] = useState<any[]>([]);
 
-    console.log(boardList)
+    const getBoardList = async () => {
+        try{
+            const res = await axios.get(API_URLS.GET_BOARD);
+            setBoardList(res.data);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
     
     useEffect(() => {
         getBoardList();
     }, []);
+
+    console.log(boardList)
 
     return(
         <Body>
             <Wrapper>
                 <CommunityHeader/>
                 <Main>
-                    <Contents/>
+                    {boardList && boardList.map(board => (
+                        <Contents 
+                            key={board.id}
+                            title={board.title}
+                            writer={board.writer}
+                            createdTime={board.createdTime}
+                            likes={board.likes}
+                        />
+                    ))}
                 </Main>
+                <CommunityFooter/>
             </Wrapper>
         </Body>
     );
