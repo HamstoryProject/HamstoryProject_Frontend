@@ -3,6 +3,7 @@
 const ICON_DIRECTION = "/images/icon";
 const PICTURE_DIRECTION = "/images/picture";
 const FONT_DIRECTION = "/fonts";
+const API_AUTH_DIRECTION = "/members";
 // serverAddress
 export const SERVER_ADDRESS = "http://localhost:8080";
 
@@ -29,22 +30,33 @@ export const FONTS = {
 
 // api url
 export const API_URLS = {
-    LOGIN : `${SERVER_ADDRESS}/members/login`,
-    SIGNUP : `${SERVER_ADDRESS}/members/create`,
-    INFO : `${SERVER_ADDRESS}/members`,
+    LOGIN : `${SERVER_ADDRESS}${API_AUTH_DIRECTION}/login`,
+    SIGNUP : `${SERVER_ADDRESS}${API_AUTH_DIRECTION}/create`,
+    INFO : `${SERVER_ADDRESS}${API_AUTH_DIRECTION}`,
     GET_BOARD : `${SERVER_ADDRESS}/boards`,
     POST_ONE_BOARD : `${SERVER_ADDRESS}/boards/`,
+};
+
+// route path
+export const ROUTE_PATH = {
+    COMMUNITY : "community",
+    BEST : "best",
+    FREE : "free",
+    PICTURE : "picture",
+    question : "question",
+    CREATE_POST : "createPost"
 };
 
 // route url
 export const ROUTE_URLS = {
     HOME : "/",
     WIKI : "/wiki",
-    COMMUNITY : "/community",
-    BEST : "/community/best",
-    FREE : "/community/free",
-    PICTURE : "/community/picture",
-    INFO : "/community/info",
+    COMMUNITY : `/${ROUTE_PATH.COMMUNITY}`,
+    BEST : `/community/${ROUTE_PATH.BEST}`,
+    FREE : `/community/${ROUTE_PATH.FREE}`,
+    PICTURE : `/community/${ROUTE_PATH.PICTURE}`,
+    QUESTION : `/community/${ROUTE_PATH.question}`,
+    CREATE_POST : `/community/${ROUTE_PATH.CREATE_POST}`,
     LOGIN : "/login",
     CREATE_ACCOUNT : "/create_account",
 };

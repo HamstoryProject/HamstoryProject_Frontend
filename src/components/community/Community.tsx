@@ -7,7 +7,7 @@ export default function Community() {
 
     useEffect(() => {
         if (location.pathname === "/community") {
-            navigate("/community/best", { replace: true });
+            navigate("/community/free", { replace: true });
         }
     }, [location.pathname, navigate]);
 

@@ -15,8 +15,8 @@ const Menu = styled.div`
     left: 0;
     top: 0;
     z-index: 1000;
-    background-color: white;
-    border-bottom: 1px solid #c5ccd2;
+    background-color: ${props => props.theme.color.white};
+    border-bottom: 1px solid ${props => props.theme.color.gray300};
 `;
 
 const MenuItem = styled.div`
@@ -30,7 +30,7 @@ const LogoText = styled.p`
     font-size: 40px;
     letter-spacing: 0.025em;
     font-weight: 900;
-    color: black;
+    color: ${props => props.theme.color.black};
 `;
 
 const TextNav = styled.div`
@@ -44,7 +44,7 @@ const TextNav = styled.div`
 const ItemText = styled.div`
     font-size: 20px;
     letter-spacing: -0.1em;
-    color: black;
+    color: ${props => props.theme.color.black};
 `;
 
 const ProfileNav = styled.div`

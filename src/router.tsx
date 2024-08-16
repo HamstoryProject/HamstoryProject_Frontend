@@ -4,13 +4,10 @@ import CreateAccount from "./routes/CreateAccount";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Wiki from "./routes/Wiki";
-import { ROUTE_URLS } from "./config";
-import Free from "./components/community/Free";
-import Board from "./components/community/Board";
-import Picture from "./components/community/Picture";
-import Info from "./components/community/Info";
-import Best from "./components/community/Best";
+import { ROUTE_PATH, ROUTE_URLS } from "./config";
+import FreeBoard from "./components/community/FreeBoard";
 import Community from "./components/community/Community";
+import CreatePost from "./components/community/CreatePost";
 
 const router = createBrowserRouter([
   {
@@ -26,44 +23,48 @@ const router = createBrowserRouter([
         element: <Community/>,
         children: [
           {
-            path: "best",
-            element: <Best/>,
+            path: ROUTE_PATH.BEST,
+            element: null,
             children: [
               {
                 path: ":id",
-                element: <Board/>,
+                element: null,
               }
             ]
           },
           {
-            path: "free",
-            element: <Free/>,
+            path: ROUTE_PATH.FREE,
+            element: <FreeBoard/>,
             children: [
               {
                 path: ":id",
-                element: <Board/>,
+                element: null,
               }
             ]
           },
           {
-            path: "picture",
-            element: <Picture/>,
+            path: ROUTE_PATH.PICTURE,
+            element: null,
             children: [
               {
                 path: ":id",
-                element: <Board/>,
+                element: null,
               }
             ]
           },
           {
-            path: "info",
-            element: <Info/>,
+            path: ROUTE_PATH.question,
+            element: null,
             children: [
               {
                 path: ":id",
-                element: <Board/>,
+                element: null,
               }
             ]
+          },
+          {
+            path: ROUTE_PATH.CREATE_POST,
+            element: <CreatePost/>,
           },
         ]
       },

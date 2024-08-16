@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { StyledBorderRadiusProps, userNameProps } from "../../interfaces";
 import { useCookies } from "react-cookie";
 import { IMAGES } from "../../config";
+import { StyledBorderRadiusProps } from "../../types/styles";
+import { UserNameProps } from "../../types/auth";
 
 const Container = styled.div`
     grid-area: pic;
@@ -35,17 +36,17 @@ const Button = styled.button<StyledBorderRadiusProps>`
     width: 100%;
     height: 40px;
     border: none;
-    border: 1px solid #c5ccd2;
-    border-top: 1px solid #c5ccd2;
+    border: 1px solid ${props => props.theme.color.gray300};
+    border-top: 1px solid ${props => props.theme.color.gray300};
     font-weight: 900;
     grid-area: btn;
     font-size: 14px;
-    background-color: #3182f6;
+    background-color: ${props => props.theme.color.blue};
     border-radius: ${props => props.borderradius};
-    color: white;
+    color: ${props => props.theme.color.white};
 `;
 
-export default function LoggedInMenu(props : userNameProps){
+export default function LoggedInMenu(props : UserNameProps){
     const [cookies, setCookie, removeCookie] = useCookies(['id']);
 
     const logout = () => {

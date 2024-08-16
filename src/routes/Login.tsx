@@ -4,8 +4,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URLS } from "../config.ts";
 import axios from "axios";
-import { LoginFormValue, StyledButtonProps, StyledGridAreaProps, StyledIsLoginErrorProps } from "../interfaces.ts";
 import { useCookies } from 'react-cookie';
+import { theme } from "../styles/theme.ts";
+import { LoginFormValue, StyledIsLoginErrorProps } from "../types/auth.ts";
+import { StyledButtonProps, StyledGridAreaProps } from "../types/styles.ts";
 
 const Body = styled.div`
     width: 100%;
@@ -27,9 +29,9 @@ const Form = styled.form<StyledIsLoginErrorProps>`
     row-gap: 15px;
     padding: 50px;
     font-size: 14px;
-    color: red;
+    color: ${props => props.theme.color.red};
     border-radius: 10px;
-    border: 1px solid #c5ccd2;
+    border: 1px solid ${props => props.theme.color.gray300};
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
@@ -61,7 +63,7 @@ const Button = styled.button<StyledButtonProps>`
     border: none;
     grid-area: ${props => props.gridarea};
     background-color: ${props => props.backgroundcolor};
-    color: white;
+    color: ${props => props.theme.color.white};
     font-weight: 900;
 `;
 
@@ -122,12 +124,12 @@ export default function Login(){
         <Body>
             <Form isError = {error != ""} onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
-                <Button gridarea={"lb"} backgroundcolor={"#3182f6"} onClick={navigateTologin}>로그인</Button>
+                <Button gridarea={"lb"} backgroundcolor={theme.color.blue} onClick={navigateTologin}>로그인</Button>
                 <Button gridarea={"rb"} backgroundcolor={"#90beff"} onClick={navigateToCreateAccount}>회원가입</Button>
                 <Input gridarea={"ie"} id="dlapd" type="email" placeholder="이메일" {...register("email")}/>
                 <Input gridarea={"ip"} id="password" type="password" placeholder="비밀번호" {...register("password")}/>
                 {error !== "" ? <Error>{error}</Error> : null}
-                <Button gridarea={"fb"} backgroundcolor={"#3182f6"} type="submit" disabled={isSubmitting}>로그인</Button>
+                <Button gridarea={"fb"} backgroundcolor={theme.color.blue} type="submit" disabled={isSubmitting}>로그인</Button>
             </Form>
         </Body>
     );

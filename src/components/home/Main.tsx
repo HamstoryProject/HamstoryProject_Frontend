@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { IMAGES } from "../../config";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
-import { StyledMainSectionProps } from "../../interfaces";
+import { StyledMainSectionProps } from "../../types/styles";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -36,11 +36,11 @@ const Picture = styled.img`
 `;
 
 const SubTitle = styled.h2`
-    color: #3182f6;
+    color: ${props => props.theme.color.blue};
 `;
 
 const Content = styled.h3`
-    color: #333d4b;
+    color: ${props => props.theme.color.gray900};
 `;
 
 

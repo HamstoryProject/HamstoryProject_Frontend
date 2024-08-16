@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Spinner = styled.div`
     border: 12px solid #f3f3f3;
-    border-top: 12px solid #3498db;
+    border-top: 12px solid ${props => props.theme.color.blue};
     border-radius: 50%;
     width: 100px;
     height: 100px;

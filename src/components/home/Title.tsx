@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 const SectionTitle = styled.h1`
     display: block;
     text-align:center;
-    color: #333d4b;
+    color: ${props => props.theme.color.gray900};
     padding-top: 100px;
     animation-name: titleTextAnimation;
     animation-duration: 1s;
@@ -49,7 +49,7 @@ const SectionToUnder = styled.div`
 `;
 
 const TxtToUnder = styled.p`
-    color: #6b7684;
+    color: ${props => props.theme.color.gray400};
 `;
 
 const Image = styled.img``;

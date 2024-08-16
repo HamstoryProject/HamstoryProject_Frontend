@@ -29,12 +29,12 @@ const Button = styled.button`
     height: 40px;
     border: none;
     border-radius: 0px 0px 5px 5px;
-    border-top: 1px solid #c5ccd2;
+    border-top: 1px solid ${props => props.theme.color.gray300};
     font-weight: 900;
     grid-area: btn;
     font-size: 14px;
-    background-color: #3182f6;
-    color: white;
+    background-color: ${props => props.theme.color.blue};
+    color: ${props => props.theme.color.white};
 `;
 
 export default function LoggedOutMenu(){

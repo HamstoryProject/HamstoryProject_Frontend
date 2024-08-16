@@ -10,8 +10,8 @@ const Menu = styled.div`
     left: 0;
     top: 0;
     z-index: 1000;
-    background-color: white;
-    border-bottom: 1px solid #c5ccd2;
+    background-color: ${props => props.theme.color.white};
+    border-bottom: 1px solid ${props => props.theme.color.gray300};
     place-items: center;
 `;
 
@@ -20,7 +20,7 @@ const LogoText = styled.p`
     font-size: 40px;
     letter-spacing: 0.025em;
     font-weight: 900;
-    color: black;
+    color: ${props => props.theme.color.black};
 `;
 export default function WikiHeader(){
     const navigate = useNavigate();

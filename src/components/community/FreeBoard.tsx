@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Contents from "./Contents";
+import PostCard from "./PostCard";
 import CommunityHeader from "../Header/CommunityHeader";
 import axios from "axios";
 import { API_URLS } from "../../config";
@@ -12,7 +12,7 @@ const Body = styled.div`
     display: flex;
     margin-top: 100px;
     justify-content: center;
-    background-color: white;
+    background-color: ${props => props.theme.color.white};
 `;
 
 const Wrapper = styled.div`
@@ -29,7 +29,7 @@ const Main = styled.ul`
     row-gap: 20px;
 `;
 
-export default function Free(){
+export default function FreeBoard(){
     const [boardList, setBoardList] = useState<any[]>([]);
 
     const getBoardList = async () => {
@@ -46,15 +46,13 @@ export default function Free(){
         getBoardList();
     }, []);
 
-    console.log(boardList)
-
     return(
         <Body>
             <Wrapper>
                 <CommunityHeader/>
                 <Main>
                     {boardList && boardList.map(board => (
-                        <Contents 
+                        <PostCard 
                             key={board.id}
                             title={board.title}
                             writer={board.writer}

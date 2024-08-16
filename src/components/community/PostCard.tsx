@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { ICONS, IMAGES } from "../../config";
+import { PostsProps } from "../../types/posts";
 
 const Wrapper = styled.li`
     width: 100%;
     height: 130px;
     display: grid;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.10);
+    box-shadow: ${props => props.theme.shadow.postShadow1}, ${props => props.theme.shadow.postShadow2};
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     border-radius: 5px;
     background-color: white;
@@ -13,7 +14,7 @@ const Wrapper = styled.li`
     grid-template-columns: 130px auto auto;
 
     &:hover{
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 4px 5px rgba(0, 0, 0, 0.08);
+        box-shadow: ${props => props.theme.shadowHover.postShadowHover1}, ${props => props.theme.shadowHover.postShadowHover2};
     }
 `;
 
@@ -36,7 +37,7 @@ const SectionMethods = styled.section`
 const ArticleTitle = styled.article`
     display: flex;
     column-gap: 5px;
-    color: #323232;
+    color: ${props => props.theme.color.gray800};
 `;
 
 const Title = styled.p`
@@ -45,13 +46,13 @@ const Title = styled.p`
 
 const Comment = styled.p`
     font-size: 20px;
-    color: #3182f6;
+    color: ${props => props.theme.color.blue};
 `;
 
 const ArticleDetails = styled.article`
     display: flex;
     column-gap: 5px;
-    color: #676767;
+    color: ${props => props.theme.color.gray500};
     font-size: 14px;
 `;
 
@@ -75,24 +76,24 @@ const IconTxt = styled.span`
     font-weight: 900;
 `;
 
-export default function Contents({title, writer, createdTime, likes}){
+export default function PostCard(props : PostsProps){
     return(
         <Wrapper>
             <Image src={IMAGES.COMMUNITY}/>
             <SectionMethods>
                 <ArticleTitle>
-                    <Title>{title}</Title>
+                    <Title>{props.title}</Title>
                     <Comment>{"[112]"}</Comment>
                 </ArticleTitle>
                 <ArticleDetails>
-                    <span>{writer}</span>
+                    <span>{props.writer}</span>
                     <span>&middot;</span>
-                    <span>{createdTime}</span>
+                    <span>{props.createdTime}</span>
                 </ArticleDetails>
             </SectionMethods>
             <SectionInfo>
                 <Icon src={ICONS.LIKE}/>
-                <IconTxt>{likes ? likes : 0}</IconTxt>
+                <IconTxt>{props.likes ? props.likes : 0}</IconTxt>
             </SectionInfo>
         </Wrapper>
     );

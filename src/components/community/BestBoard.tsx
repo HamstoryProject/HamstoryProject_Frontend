@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Contents from "./Contents";
 import CommunityHeader from "../Header/CommunityHeader";
 
 const Body = styled.div`
@@ -8,7 +7,7 @@ const Body = styled.div`
     display: flex;
     margin-top: 100px;
     justify-content: center;
-    background-color: white;
+    background-color: ${props => props.theme.color.white};
 `;
 
 const Wrapper = styled.div`
@@ -21,10 +20,11 @@ const Wrapper = styled.div`
 const Main = styled.ul`
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #c5ccd2;
+    border-bottom: 1px solid ${props => props.theme.color.gray300};
 `;
 
-export default function Picture() {
+export default function Best(){
+    
     return(
         <Body>
             <Wrapper>

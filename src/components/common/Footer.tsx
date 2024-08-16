@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
     width: 100%;
     height: 100px;
-    background-color: white;
+    background-color: ${props => props.theme.color.white};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const Text = styled.span`
     font-size: 14px;
-    color: #999;
+    color: ${props => props.theme.color.gray300};
 `;
 
 export default function Footer(){

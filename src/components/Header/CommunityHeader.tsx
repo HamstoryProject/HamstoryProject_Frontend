@@ -2,11 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ROUTE_URLS } from "../../config";
 
-interface Props {
-    backgroundcolor : string;
-    color : string
-}
-
 const Header = styled.div`
     display: grid;
     width: 100%;
@@ -32,21 +27,21 @@ const SectionFunction = styled.div`
     column-gap: 7px;
 `;
 
-const Button = styled.button<Props>`
+const Button = styled.button`
     width: 70px;
     height: 35px;
-    border: 1px solid #c5ccd2;
-    background-color: ${props => props.backgroundcolor};
-    color: ${props => props.color};
+    border: 1px solid ${props => props.theme.color.gray300};
+    background-color: ${props => props.theme.color.white};
+    color: ${props => props.theme.color.black};
     font-weight: 900;
 `;
 
-const ButtonInput = styled.button<Props>`
+const ButtonInput = styled.button`
     width: 90px;
     height: 35px;
-    border: 1px solid #c5ccd2;
-    background-color: ${props => props.backgroundcolor};
-    color: ${props => props.color};
+    border: 1px solid ${props => props.theme.color.gray300};
+    background-color: ${props => props.theme.color.blue};
+    color: ${props => props.theme.color.white};
     font-weight: 900;
 `;
 
@@ -60,7 +55,7 @@ export default function CommunityHeader(){
         { path: ROUTE_URLS.BEST, label: "인기" },
         { path: ROUTE_URLS.FREE, label: "자유" },
         { path: ROUTE_URLS.PICTURE, label: "사진" },
-        { path: ROUTE_URLS.INFO, label: "정보" }
+        { path: ROUTE_URLS.QUESTION, label: "정보" }
     ]
 
     const location = useLocation();
@@ -73,15 +68,11 @@ export default function CommunityHeader(){
             </SectionCategory>
             <SectionFunction>
                 {categories.map((category, index) => (
-                    <Button 
-                        key={index} onClick={() => navigate(category.path)} 
-                        backgroundcolor={location.pathname === category.path ? "white" : "white"} 
-                        color={location.pathname === category.path ? "black" : "black"}
-                    >
+                    <Button key={index} onClick={() => navigate(category.path)}>
                         {category.label}
                     </Button>
                 ))}
-                <ButtonInput onClick={() => navigate("/community/write")} backgroundcolor={"#17b75e"} color={"white"}>글쓰기</ButtonInput>
+                <ButtonInput onClick={() => navigate(ROUTE_URLS.CREATE_POST)}>글쓰기</ButtonInput>
             </SectionFunction>
         </Header>
     );

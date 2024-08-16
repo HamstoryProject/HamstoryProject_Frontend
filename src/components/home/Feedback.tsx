@@ -26,11 +26,11 @@ const TextSecion = styled.div`
     justify-content: center;
     row-gap: 30px;
     grid-area: "t";
-    background-color: #f0f0f0;
+    background-color: ${props => props.theme.color.gray100};
 `;
 
 const Content = styled.h3`
-    color: #333d4b;
+    color: ${props => props.theme.color.gray900};
 `;
 
 export default function Feedback(){

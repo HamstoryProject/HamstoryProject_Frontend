@@ -13,8 +13,8 @@ const Wrapper = styled.ul`
     position: absolute;
     place-items: center;
     top: 80px;
-    background-color: white;
-    border: 1px solid #c5ccd2;
+    background-color: ${props => props.theme.color.white};
+    border: 1px solid ${props => props.theme.color.gray300};
     border-radius: 5px;
     font-size: 14px;
     word-break: break-word;
