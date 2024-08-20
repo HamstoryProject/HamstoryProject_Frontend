@@ -7,6 +7,7 @@ export const theme : DefaultTheme = {
         black : "#000000",
         red : "ff0000",
         gray100 : "#f0f0f0",
+        gray200 : "#dddddd",
         gray300 : '#c5ccd2',
         gray400 : "#6b7684",
         gray500 : "#676767",
@@ -16,6 +17,7 @@ export const theme : DefaultTheme = {
     shadow : {
         postShadow1 : '0 1px 3px rgba(0, 0, 0, 0.08)',
         postShadow2 : '0 1px 2px rgba(0, 0, 0, 0.10)',
+        inputShadow1 : '2px 2px 12px rgba(0, 0, 0, 0.1);',
     },
     shadowHover : {
         postShadowHover1 : '0 3px 6px rgba(0, 0, 0, 0.1)',

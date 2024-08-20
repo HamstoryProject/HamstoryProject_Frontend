@@ -8,6 +8,7 @@ declare module 'styled-components'{
             black : string
             red : string
             gray100 : string
+            gray200 : string
             gray300 : string
             gray400 : string
             gray500 : string
@@ -17,6 +18,7 @@ declare module 'styled-components'{
         shadow : {
             postShadow1 : string
             postShadow2 : string
+            inputShadow1 : string
         }
         shadowHover : {
             postShadowHover1 : string

@@ -23,16 +23,6 @@ const router = createBrowserRouter([
         element: <Community/>,
         children: [
           {
-            path: ROUTE_PATH.BEST,
-            element: null,
-            children: [
-              {
-                path: ":id",
-                element: null,
-              }
-            ]
-          },
-          {
             path: ROUTE_PATH.FREE,
             element: <FreeBoard/>,
             children: [

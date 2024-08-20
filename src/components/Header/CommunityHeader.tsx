@@ -52,13 +52,11 @@ const Text = styled.h2`
 
 export default function CommunityHeader(){
     const categories = [
-        { path: ROUTE_URLS.BEST, label: "인기" },
         { path: ROUTE_URLS.FREE, label: "자유" },
         { path: ROUTE_URLS.PICTURE, label: "사진" },
         { path: ROUTE_URLS.QUESTION, label: "정보" }
     ]
 
-    const location = useLocation();
     const navigate = useNavigate();
 
     return(
