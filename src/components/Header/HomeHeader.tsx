@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import DropDownMenu from "../dropDownMenu/DropDownMenu";
-import { ICON_INFO, IMAGE_COMMUNITY, PATH_HOME, PATH_WIKI } from "../../config";
+import { ICONS, IMAGES, ROUTE_URLS, API_URLS } from "../../config";
 import { useEffect, useState } from "react";
-import { URL_INFO } from "../../config";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
@@ -16,8 +15,8 @@ const Menu = styled.div`
     left: 0;
     top: 0;
     z-index: 1000;
-    background-color: white;
-    border-bottom: 1px solid #c5ccd2;
+    background-color: ${props => props.theme.color.white};
+    border-bottom: 1px solid ${props => props.theme.color.gray300};
 `;
 
 const MenuItem = styled.div`
@@ -31,7 +30,7 @@ const LogoText = styled.p`
     font-size: 40px;
     letter-spacing: 0.025em;
     font-weight: 900;
-    color: black;
+    color: ${props => props.theme.color.black};
 `;
 
 const TextNav = styled.div`
@@ -45,7 +44,7 @@ const TextNav = styled.div`
 const ItemText = styled.div`
     font-size: 20px;
     letter-spacing: -0.1em;
-    color: black;
+    color: ${props => props.theme.color.black};
 `;
 
 const ProfileNav = styled.div`
@@ -77,12 +76,12 @@ const Text = styled.h3`
     font-weight: 900;
 `;
 
-export default function Navbar(){
+export default function HomeHeader(){
     const menuItems = [
-        { name: "햄스토리", path: PATH_HOME },
-        { name: '커뮤니티', path: PATH_HOME },
-        { name: '위키', path: PATH_WIKI },
-        { name: '도움말', path: PATH_HOME },
+        { name: "햄스토리", path: ROUTE_URLS.HOME },
+        { name: '커뮤니티', path: ROUTE_URLS.COMMUNITY },
+        { name: '위키', path: ROUTE_URLS.WIKI },
+        { name: '도움말', path: ROUTE_URLS.HOME },
     ];
 
     const [cookies, setCookie, removeCookie] = useCookies(['id']);
@@ -91,7 +90,7 @@ export default function Navbar(){
 
     const authCheck = () => {
         const token = cookies.id;
-        axios.get(URL_INFO, {
+        axios.get(API_URLS.INFO, {
             headers: {
                 "content-type": "application/json",
                 "Authorization": "Bearer " + token,
@@ -125,7 +124,7 @@ export default function Navbar(){
             </TextNav>
             <ProfileNav>
                 <SectionProfile onClick={() => {setView(!view)}}>
-                    {userName ? <><Img src={IMAGE_COMMUNITY}/><Text>{userName}</Text></> : <><Img src={ICON_INFO}/><Text>Guest</Text></>}
+                    {userName ? <><Img src={IMAGES.COMMUNITY}/><Text>{userName}</Text></> : <><Img src={ICONS.PROFILE}/><Text>Guest</Text></>}
                 </SectionProfile>
                 {view && <DropDownMenu userName={userName}/>}
             </ProfileNav>

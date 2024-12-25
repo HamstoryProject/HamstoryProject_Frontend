@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL_SIGNUP } from "../config.ts";
+import { API_URLS } from "../config.ts";
 import axios from "axios";
-import { CreateAccountFormValue, StyledButtonProps, StyledGridAreaProps, StyledIsCreateAccountErrorProps } from "../interfaces.ts";
+import { theme } from "../styles/theme.ts";
+import { CreateAccountFormValue, StyledIsCreateAccountErrorProps } from "../types/auth.ts";
+import { StyledButtonProps, StyledGridAreaProps } from "../types/styles.ts";
 
 const Body = styled.div`
     width: 100%;
@@ -28,7 +30,7 @@ const Button = styled.button<StyledButtonProps>`
     border: none;
     grid-area: ${props => props.gridarea};
     background-color: ${props => props.backgroundcolor};
-    color: white;
+    color: ${props => props.theme.color.white};
     font-weight: 900;
 `;
 
@@ -50,8 +52,8 @@ const Form = styled.form<StyledIsCreateAccountErrorProps>`
     row-gap: 15px;
     padding: 50px;
     border-radius: 10px;
-    border: 1px solid #c5ccd2;
-    color: red;
+    border: 1px solid ${props => props.theme.color.gray300};
+    color: ${props => props.theme.color.red};
     grid-template-areas:
         "lg lg"
         "lb rb"
@@ -111,7 +113,7 @@ export default function CreateAccount(){
                 })], {
                     type: "application/json"
                 }));
-                await axios.post(URL_SIGNUP, formData);
+                await axios.post(API_URLS.SIGNUP, formData);
                 navigate("/");
             }
             catch(err){
@@ -130,7 +132,7 @@ export default function CreateAccount(){
                 onSubmit={handleSubmit(onSubmit)}>
                 <Logo onClick={navigateToHome}>HAMSTORY</Logo>
                 <Button gridarea={"lb"} backgroundcolor={"#90beff"} onClick={navigateTologin}>로그인</Button>
-                <Button gridarea={"rb"} backgroundcolor={"#3182f6"} onClick={navigateToCreateAccount}>회원가입</Button>
+                <Button gridarea={"rb"} backgroundcolor={theme.color.blue} onClick={navigateToCreateAccount}>회원가입</Button>
                 <Input gridarea={"in"} id="nickName" type="text" placeholder="닉네임" {...register("nickName", {
                     required: "이름은 필수 입력입니다.",
                 })}
@@ -155,7 +157,7 @@ export default function CreateAccount(){
                 aria-invalid={isSubmitting ? (errors.password ? "true" : "false") : undefined}/>
                 {errors.password && <Error gridarea={"per"}>{errors.password.message?.toString()}</Error>}
                 {resError !== "" ? <Error gridarea={"er"}>{resError}</Error> : null}
-                <Button gridarea={"fb"} backgroundcolor={"#3182f6"} type="submit" disabled={isSubmitting}>회원가입</Button>
+                <Button gridarea={"fb"} backgroundcolor={theme.color.blue} type="submit" disabled={isSubmitting}>회원가입</Button>
             </Form>
         </Body>
     );

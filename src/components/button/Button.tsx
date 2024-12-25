@@ -1,14 +1,14 @@
 import styled from "styled-components"
-import { ButtonProps } from "../../interfaces";
+import { ButtonProps } from "../../types/button";
 
 const StyledButton = styled.button`
     width: 24%;
     height: 45px;
     border: none;
     border-radius: 10px;
-    color: white;
+    color: ${props => props.theme.color.white};
     font-size: 15px;
-    background-color: #3182f6;
+    background-color: ${props => props.theme.color.blue};
     font-weight: 900;
 `;
 

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { FONTS } from "../config";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -66,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
   
   @font-face {
     font-family: 'NotoSansKRMedium';
-    src: url('public/fonts/NotoSansKR-Medium.otf');
+    src: url(${FONTS.NOTOSANS_KR});
   }
 
   body{

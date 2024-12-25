@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LoggedInMenu from "./LoggedInMenu";
 import LoggedOutMenu from "./LoggedOutMenu";
-import { userNameProps } from "../../interfaces";
+import { UserNameProps } from "../../types/auth";
 
 // pic: picture
 // nm: name
@@ -13,8 +13,8 @@ const Wrapper = styled.ul`
     position: absolute;
     place-items: center;
     top: 80px;
-    background-color: white;
-    border: 1px solid #c5ccd2;
+    background-color: ${props => props.theme.color.white};
+    border: 1px solid ${props => props.theme.color.gray300};
     border-radius: 5px;
     font-size: 14px;
     word-break: break-word;
@@ -25,7 +25,7 @@ const Wrapper = styled.ul`
         "btn";
 `;
 
-export default function DropDownMenu(props : userNameProps){
+export default function DropDownMenu(props : UserNameProps){
     return(
         <Wrapper>
             {props.userName ? <LoggedInMenu userName = {props.userName}/> : <LoggedOutMenu/>}

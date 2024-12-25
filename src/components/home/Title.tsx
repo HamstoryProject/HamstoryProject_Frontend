@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ICON_TO_UNDER } from "../../config";
+import { ICONS } from "../../config";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 const SectionTitle = styled.h1`
     display: block;
     text-align:center;
-    color: #333d4b;
+    color: ${props => props.theme.color.gray900};
     padding-top: 100px;
     animation-name: titleTextAnimation;
     animation-duration: 1s;
@@ -49,7 +49,7 @@ const SectionToUnder = styled.div`
 `;
 
 const TxtToUnder = styled.p`
-    color: #6b7684;
+    color: ${props => props.theme.color.gray400};
 `;
 
 const Image = styled.img``;
@@ -60,7 +60,7 @@ export default function Title(){
             <SectionTitle>햄스터의 모든 것<br/><b>HAMSTORY</b>에서 만나보세요</SectionTitle>
             <SectionToUnder>
                 <TxtToUnder>아래로 스크롤 해 자세히 알아보기</TxtToUnder>
-                <Image src={ICON_TO_UNDER}/>
+                <Image src={ICONS.TO_UNDER}/>
             </SectionToUnder>
         </Wrapper>
     );
