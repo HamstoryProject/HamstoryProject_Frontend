@@ -24,7 +24,9 @@ export default function RootLayout({
         <html lang="kr">
             <body className={`${outfit.className} flex flex-col antialiased`}>
                 <Header />
-                <main className="flex-1 pt-24 min-h-screen">{children}</main>
+                <main className="flex-1 flex flex-col items-center min-h-screen mx-auto">
+                    {children}
+                </main>
                 <Footer />
             </body>
         </html>

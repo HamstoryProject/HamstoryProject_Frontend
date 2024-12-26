@@ -2,12 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+    @apply text-[40px] leading-[50.4px];
+}
 h2 {
-    @apply text-[20px] font-[700] leading-[25.2px];
+    @apply text-[24px] leading-[30.24px];
 }
 h3 {
-    @apply text-[16px] font-[400] leading-[20.16px];
+    @apply text-[20px] leading-[25.2px];
 }
 h4 {
-    @apply text-[12px] font-[500] leading-[15.12px];
+    @apply text-[16px] leading-[20.16px];
+}
+h5 {
+    @apply text-[12px] leading-[15.12px];
+}
+strong {
+    @apply font-[700];
 }
