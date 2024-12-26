@@ -1,3 +1,5 @@
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
@@ -20,8 +22,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="kr">
-            <body className={`${outfit.className} antialiased`}>
-                {children}
+            <body className={`${outfit.className} flex flex-col antialiased`}>
+                <Header />
+                <main className="flex-1 pt-24 min-h-screen">{children}</main>
+                <Footer />
             </body>
         </html>
     );
