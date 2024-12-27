@@ -9,17 +9,17 @@ export default function Header() {
                 </Link>
             </li>
             <li>
-                <Link href="/">
+                <Link href="/community">
                     <h3 className="font-normal">커뮤니티</h3>
                 </Link>
             </li>
             <li>
-                <Link href="/">
+                <Link href="/wiki">
                     <h3 className="font-normal">위키</h3>
                 </Link>
             </li>
             <li className="ml-auto">
-                <Link href="/">
+                <Link href="/login">
                     <h3 className="font-normal">로그인</h3>
                 </Link>
             </li>

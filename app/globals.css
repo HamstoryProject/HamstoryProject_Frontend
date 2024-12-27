@@ -17,6 +17,3 @@ h4 {
 h5 {
     @apply text-[12px] leading-[15.12px];
 }
-strong {
-    @apply font-[700];
-}
