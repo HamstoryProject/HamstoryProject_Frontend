@@ -15,6 +15,8 @@ const routes: { publicOnly: Routes; privateOnly: Routes } = {
     },
     privateOnly: {
         "/community": true,
+        "/wiki": true,
+        "/feedback": true,
     },
 } as const;
 

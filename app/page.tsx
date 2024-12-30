@@ -1,21 +1,13 @@
+"use client";
+
+import Landing from "@/components/landing";
 import MainHeroArticle from "@/components/main-hero-article";
 import Link from "next/link";
 
 export default function Home() {
     return (
         <>
-            <section className="pt-24 h-screen flex flex-col">
-                <article className="h-5/6 flex flex-col gap-4 items-center justify-center">
-                    <h1 className="font-bold">HAMSTORY</h1>
-                    <div className="flex flex-col items-center">
-                        <h2>햄스터들의 모든 이야기</h2>
-                        <h2>햄스토리 웹서비스에서 공유해보세요.</h2>
-                    </div>
-                </article>
-                <h4 className="h-1/6 flex items-center justify-center">
-                    아래로 스크롤 해 자세히 알아보기
-                </h4>
-            </section>
+            <Landing />
             <section className="max-w-screen-xl py-20 flex flex-col gap-20">
                 <MainHeroArticle
                     category={"커뮤니티"}
