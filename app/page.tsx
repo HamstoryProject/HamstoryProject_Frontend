@@ -1,8 +1,8 @@
 "use client";
 
-import Landing from "@/components/landing";
-import MainHeroArticle from "@/components/main-hero-article";
-import Link from "next/link";
+import Feedback from "@/components/section/feedback/feedback";
+import Landing from "@/components/section/landing/landing";
+import MainHeroArticle from "@/components/section/main-hero-article";
 
 export default function Home() {
     return (
@@ -26,18 +26,7 @@ export default function Home() {
                     linkURL={"/wiki"}
                 />
             </section>
-            <section className="w-screen h-screen flex flex-col items-center justify-center">
-                <article className="w-full h-1/2 flex flex-col items-center justify-center bg-neutral-100 gap-4">
-                    <h1 className="font-bold">홈페이지는 계속 성장중</h1>
-                    <h4>여러분들의 소중한 의견을 항상 환영합니다.</h4>
-                    <Link
-                        href={"/feedback"}
-                        className="bg-neutral-200 text-black rounded-full px-5 py-2"
-                    >
-                        피드백 보내기
-                    </Link>
-                </article>
-            </section>
+            <Feedback />
         </>
     );
 }
