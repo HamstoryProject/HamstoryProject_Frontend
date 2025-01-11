@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
     return (
         <header>
-            <ul className="w-screen h-20 px-16 flex items-center bg-neutral-900 border-b border-b-neutral-900/50 fixed z-50 top-0 gap-4">
+            <ul className="w-screen h-20 px-16 flex items-center bg-neutral-900 fixed z-50 top-0 gap-4">
                 <li className="mr-2">
                     <Link href="/" className="font-bold text-lg">
                         HAMSTORY

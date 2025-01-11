@@ -13,7 +13,7 @@ export default function Landing() {
                     ease: "easeOut",
                 }}
             >
-                <article className="flex flex-col items-center bg-gradient-to-b from-[#3B3B41]/25 to-neutral-900 z-10 w-full h-full justify-center text-white backdrop-blur-sm gap-1">
+                <article className="flex flex-col items-center bg-gradient-to-b from-neutral-900/60 to-neutral-900 z-10 w-full h-full justify-center text-white backdrop-blur-sm gap-1">
                     <h1 className="font-bold text-3xl">HAMSTORY</h1>
                     <div className="flex flex-col items-center text-xl">
                         <h2>햄스터들의 모든 이야기</h2>
