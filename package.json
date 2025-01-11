@@ -1,39 +1,33 @@
 {
-  "name": "hamstoryproject-frontend",
+  "name": "hamstory",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@types/react-modal": "^3.16.3",
-    "axios": "^1.6.2",
-    "cors": "^2.8.5",
-    "react": "^18.2.0",
-    "react-cookie": "^6.1.1",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.48.2",
-    "react-modal": "^3.16.1",
-    "react-router-dom": "^6.17.0",
-    "styled-components": "^6.1.0",
-    "styled-reset": "^4.5.2"
+    "@prisma/client": "^6.1.0",
+    "bcrypt": "^5.1.1",
+    "framer-motion": "^11.15.0",
+    "iron-session": "^8.0.4",
+    "next": "14.2.21",
+    "prisma": "^6.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@types/styled-components": "^5.1.29",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vitejs/plugin-react-swc": "^3.3.2",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vite-plugin-mkcert": "^1.17.4"
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.21",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
