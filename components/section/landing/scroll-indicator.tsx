@@ -14,7 +14,7 @@ export default function ScrollIndicator() {
                     duration: 2,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: 2.8,
+                    delay: 2.5,
                 }}
             >
                 <Image
