@@ -27,10 +27,7 @@ const formSchema = z.object({
             checkEmailExists,
             "이 이메일을 사용하는 계정이 존재하지 않습니다."
         ),
-    password: z
-        //.min(PASSWORD_MIN_LENGTH, PASSWORD_MIN_LENGTH_ERROR)
-        //.regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR)
-        .string({ required_error: "비밀번호는 필수입니다." }),
+    password: z.string({ required_error: "비밀번호는 필수입니다." }),
 });
 
 export async function handleLogin(prevState: any, formData: FormData) {
@@ -59,7 +56,7 @@ export async function handleLogin(prevState: any, formData: FormData) {
             const session = await getSession();
             session.id = user!.id;
             await session.save();
-            redirect("/profile");
+            redirect("/");
         } else {
             return {
                 fieldErrors: {

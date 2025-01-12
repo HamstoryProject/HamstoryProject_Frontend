@@ -24,8 +24,6 @@ const formSchema = z
             })
             .toLowerCase()
             .trim(),
-        //.transform((username) => `!${username}!`)
-        //.refine(checkUsername, "부적절한 단어는 사용할 수 없습니다."),
         email: z
             .string({
                 invalid_type_error: "이메일은 문자여야 합니다.",
@@ -33,10 +31,7 @@ const formSchema = z
             })
             .email("이메일 형식이 올바르지 않습니다.")
             .toLowerCase(),
-        password: z
-            .string()
-            //.regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR)
-            .min(PASSWORD_MIN_LENGTH),
+        password: z.string().min(PASSWORD_MIN_LENGTH),
         confirmPassword: z.string().min(PASSWORD_MIN_LENGTH),
     })
     .superRefine(async ({ username }, ctx) => {
@@ -91,7 +86,6 @@ export async function handleCreateAccount(prevState: any, formData: FormData) {
     };
     const result = await formSchema.spa(data);
     if (!result.success) {
-        console.log(result.error.flatten());
         return result.error.flatten();
     } else {
         const hashedPassword = await bcrypt.hash(result.data.password, 12);

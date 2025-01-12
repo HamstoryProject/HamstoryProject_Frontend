@@ -11,10 +11,10 @@ export default function Input({
     ...rest
 }: InputProps & InputHTMLAttributes<HTMLInputElement>) {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
             <input
                 name={name}
-                className="bg-transparent rounded-md w-full h-10 focus:outline-none ring-2 focus:ring-2 transition ring-neutral-200 focus:ring-orange-500 border-none placeholder:text-neutral-400"
+                className="px-4 bg-transparent w-full h-14 focus:outline-none focus:ring-inset focus:ring-1 transition focus:ring-neutral-500 border-none placeholder:text-neutral-400 bg-neutral-700 rounded-sm"
                 {...rest}
             />
             {errors.map((error, index) => (

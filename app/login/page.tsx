@@ -10,41 +10,37 @@ export default function Login() {
     const [state, dispatch] = useFormState(handleLogin, null);
 
     return (
-        <section className="pt-24 h-screen flex flex-col items-center justify-center gap">
+        <main className="pt-20 w-screen h-screen max-w-md mx-auto flex flex-col items-center justify-center gap-10">
             <Link href="/">
-                <h1>HAMSTORY</h1>
+                <h1 className="text-3xl font-bold">HAMSTORY</h1>
             </Link>
-            <article className="flex w-full">
-                <Link
-                    href="/login"
-                    className="bg-neutral-200 w-1/2 py-2 text-center "
-                >
-                    로그인
-                </Link>
-                <Link
-                    href="/join"
-                    className="bg-neutral-100 w-1/2 py-2 text-center"
-                >
-                    회원가입
-                </Link>
-            </article>
-            <form action={dispatch} className="flex flex-col w-full">
+            <form action={dispatch} className="flex flex-col w-full gap-3">
                 <Input
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder="이메일"
                     required
                     errors={state?.fieldErrors.email}
                 />
                 <Input
                     name="password"
                     type="password"
-                    placeholder="Password"
+                    placeholder="비밀번호"
                     required
                     errors={state?.fieldErrors.password}
                 />
+                <article className="flex gap-2 text-neutral-400">
+                    <input id="maintainLogin" type="checkbox" />
+                    <label htmlFor="maintainLogin">로그인 상태 유지</label>
+                </article>
                 <Button text="로그인" />
             </form>
-        </section>
+            <article className="flex gap-3 text-sm">
+                <span className="text-neutral-400">
+                    아직 계정이 없으신가요?
+                </span>
+                <Link href="/join">회원가입</Link>
+            </article>
+        </main>
     );
 }
