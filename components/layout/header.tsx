@@ -1,9 +1,7 @@
-import { getUser } from "@/lib/user";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function Header() {
-    const user = await getUser();
+    const user = null;
 
     return (
         <header>
@@ -29,20 +27,7 @@ export default async function Header() {
                             href="/profile"
                             className="flex items-center gap-2"
                         >
-                            {user.avatar ? (
-                                <Image
-                                    src={user.avatar}
-                                    alt="avatar"
-                                    width={32}
-                                    height={32}
-                                    className="rounded-full"
-                                />
-                            ) : (
-                                <div className="size-8 rounded-full bg-neutral-500" />
-                            )}
-                            <span className="md:text-base text-sm font-bold">
-                                {user.username}
-                            </span>
+                            <span className="md:text-base text-sm font-bold"></span>
                         </Link>
                     ) : (
                         <Link href="/login" className="text-base">
