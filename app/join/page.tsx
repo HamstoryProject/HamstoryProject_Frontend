@@ -10,7 +10,7 @@ export default function Join() {
     const [state, dispatch] = useFormState(handleCreateAccount, null);
 
     return (
-        <main className="pt-20 w-screen h-screen max-w-md mx-auto flex flex-col items-center justify-center gap-10">
+        <div className="w-1/4 my-auto flex flex-col items-center justify-center gap-10">
             <Link href="/">
                 <h1 className="text-3xl font-bold">HAMSTORY</h1>
             </Link>
@@ -51,6 +51,6 @@ export default function Join() {
                 </span>
                 <Link href="/login">로그인</Link>
             </article>
-        </main>
+        </div>
     );
 }

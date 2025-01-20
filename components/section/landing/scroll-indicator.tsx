@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ScrollIndicator() {
     return (
-        <section className="h-20 flex flex-col items-center pt-2">
+        <section className="w-full h-20 flex flex-col items-center pt-2">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{

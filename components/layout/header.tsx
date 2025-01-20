@@ -7,19 +7,19 @@ export default async function Header() {
 
     return (
         <header>
-            <ul className="w-screen h-20 px-16 flex items-center bg-neutral-900 fixed z-50 top-0 gap-4">
+            <ul className="w-full h-20 md:px-16 px-8 flex items-center bg-neutral-900 fixed z-50 top-0 gap-4">
                 <li className="mr-2">
-                    <Link href="/" className="font-bold text-lg">
+                    <Link href="/" className="md:text-lg text-base font-bold ">
                         HAMSTORY
                     </Link>
                 </li>
                 <li>
-                    <Link href="/community" className="text-base">
+                    <Link href="/community" className="md:text-base text-sm">
                         커뮤니티
                     </Link>
                 </li>
                 <li>
-                    <Link href="/wiki" className="text-base">
+                    <Link href="/wiki" className="md:text-base text-sm">
                         위키
                     </Link>
                 </li>
@@ -40,7 +40,7 @@ export default async function Header() {
                             ) : (
                                 <div className="size-8 rounded-full bg-neutral-500" />
                             )}
-                            <span className="text-base font-bold">
+                            <span className="md:text-base text-sm font-bold">
                                 {user.username}
                             </span>
                         </Link>

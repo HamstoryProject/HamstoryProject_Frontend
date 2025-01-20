@@ -10,7 +10,7 @@ export default function Login() {
     const [state, dispatch] = useFormState(handleLogin, null);
 
     return (
-        <main className="pt-20 w-screen h-screen max-w-md mx-auto flex flex-col items-center justify-center gap-10">
+        <div className="w-1/4 my-auto flex flex-col items-center justify-center gap-10">
             <Link href="/">
                 <h1 className="text-3xl font-bold">HAMSTORY</h1>
             </Link>
@@ -41,6 +41,6 @@ export default function Login() {
                 </span>
                 <Link href="/join">회원가입</Link>
             </article>
-        </main>
+        </div>
     );
 }

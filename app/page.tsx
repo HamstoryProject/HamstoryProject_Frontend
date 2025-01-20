@@ -6,7 +6,7 @@ import MainHeroArticle from "@/components/section/main-hero-article";
 
 export default function Home() {
     return (
-        <main className="flex flex-col items-center">
+        <>
             <Landing />
             <section className="max-w-screen-xl py-20 flex flex-col gap-20">
                 <MainHeroArticle
@@ -27,6 +27,6 @@ export default function Home() {
                 />
             </section>
             <Feedback />
-        </main>
+        </>
     );
 }

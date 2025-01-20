@@ -3,7 +3,7 @@ import ScrollIndicator from "./scroll-indicator";
 
 export default function Landing() {
     return (
-        <section className="pt-20 w-screen h-screen flex flex-col">
+        <section className="w-full h-screen flex flex-col">
             <motion.section
                 className="relative flex-1 flex"
                 initial={{ opacity: 0, y: 0 }}
@@ -13,19 +13,23 @@ export default function Landing() {
                     ease: "easeOut",
                 }}
             >
-                <article className="flex flex-col items-center bg-gradient-to-b from-neutral-900/60 to-neutral-900 z-10 w-full h-full justify-center text-white backdrop-blur-sm gap-1">
-                    <h1 className="font-bold text-3xl">HAMSTORY</h1>
-                    <div className="flex flex-col items-center text-xl">
-                        <h2>햄스터들의 모든 이야기</h2>
-                        <h2>햄스토리 웹서비스에서 공유해보세요</h2>
-                    </div>
-                </article>
-                <div className="absolute h-full inset-0 grid grid-cols-4 grid-rows-3 my-auto">
+                <div className="w-full h-full flex flex-col bg-gradient-to-b from-neutral-900/60 to-neutral-900 z-10 justify-center text-white backdrop-blur-sm">
+                    <article className="flex flex-col items-center text-center px-10 gap-2">
+                        <h1 className="font-bold md:text-3xl text-2xl">
+                            HAMSTORY
+                        </h1>
+                        <div className="flex flex-col items-center md:text-xl text-lg">
+                            <h2>햄스터들의 모든 이야기</h2>
+                            <h2>오직 햄스토리 웹서비스에서</h2>
+                        </div>
+                    </article>
+                </div>
+                <div className="w-full absolute h-full inset-0 grid md:grid-cols-4 grid-cols-2 grid-rows-3 gap-1">
                     {/* 애니메이션 느림, 속도 조정 필요 */}
                     {[...Array(12)].map((_, i) => (
                         <motion.div
                             key={i}
-                            className="m-1 rounded-md bg-cover bg-center"
+                            className="rounded-md bg-cover bg-center"
                             style={{
                                 backgroundImage: `url('/jpgs/${i + 1}.jpg')`,
                             }}
