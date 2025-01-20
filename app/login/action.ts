@@ -30,6 +30,7 @@ const formSchema = z.object({
     password: z.string({ required_error: "비밀번호는 필수입니다." }),
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function handleLogin(prevState: any, formData: FormData) {
     const data = {
         email: formData.get("email"),

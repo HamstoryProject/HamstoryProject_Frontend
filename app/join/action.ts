@@ -77,6 +77,7 @@ const formSchema = z
         path: ["confirmPassword"],
     });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function handleCreateAccount(prevState: any, formData: FormData) {
     const data = {
         username: formData.get("username"),
