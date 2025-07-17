@@ -7,7 +7,7 @@ export default async function Header() {
 
     return (
         <header>
-            <ul className="w-full h-20 md:px-16 px-8 flex items-center bg-neutral-900 fixed z-50 top-0 gap-4">
+            <ul className="w-full h-20 md:px-16 px-8 flex items-center bg-neutral-900 fixed z-50 top-0 gap-4 border-b border-b-neutral-800">
                 <li className="mr-2">
                     <Link href="/" className="md:text-lg text-base font-bold ">
                         HAMSTORY

@@ -1,6 +1,6 @@
 ## 0. 홈페이지 주소
 
--   ### https://anchovia.github.io/HamstoryWebProject/
+-   ### none
 
 ## 1. 홈페이지 이름
 

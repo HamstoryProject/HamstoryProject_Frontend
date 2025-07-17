@@ -4,16 +4,19 @@ import { useFormStatus } from "react-dom";
 
 interface ButtonProps {
     text: string;
+    containerStyles?: string;
+    textStyles?: string;
 }
 
-export default function Button({ text }: ButtonProps) {
+export default function Button({
+    text,
+    containerStyles,
+    textStyles,
+}: ButtonProps) {
     const { pending } = useFormStatus();
     return (
-        <button
-            disabled={pending}
-            className="w-full h-14 rounded-sm bg-neutral-500 disabled:bg-neutral-700 disabled:text-neutral-500 disabled:cursor-not-allowed"
-        >
-            {pending ? "로딩 중" : text}
+        <button className={containerStyles} disabled={pending}>
+            <span className={textStyles}>{pending ? "로딩 중" : text}</span>
         </button>
     );
 }
