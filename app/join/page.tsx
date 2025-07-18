@@ -43,7 +43,7 @@ export default function Join() {
                     required
                     errors={state?.fieldErrors.confirmPassword}
                 />
-                <Button text="회원가입" />
+                <Button text="회원가입" containerStyles="bg-neutral-800 p-4" />
             </form>
             <article className="flex gap-3 text-sm">
                 <span className="text-neutral-400">

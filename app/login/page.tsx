@@ -33,7 +33,7 @@ export default function Login() {
                     <input id="maintainLogin" type="checkbox" />
                     <label htmlFor="maintainLogin">로그인 상태 유지</label>
                 </article>
-                <Button text="로그인" />
+                <Button text="로그인" containerStyles="bg-neutral-800 p-4" />
             </form>
             <article className="flex gap-3 text-sm">
                 <span className="text-neutral-400">
