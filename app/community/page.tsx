@@ -7,7 +7,7 @@ export default function Community() {
     return (
         <div className="pl-72 w-full flex gap-8 py-6 justify-center">
             <section className="w-[740px] flex flex-col gap-4 relative">
-                <section className="pb-4 flex items-center border-b border-neutral-800 gap-2 [&:has(input:focus)>article:not(:last-child)]:hidden">
+                <section className="pb-4 flex items-center border-b border-neutral-800 gap-2">
                     <article className="px-3 py-2 flex gap-1.5 items-center text-neutral-300 hover:bg-neutral-700 rounded-full text-sm bg-neutral-950 border border-neutral-800">
                         <p>베스트</p>
                         <Image
@@ -43,7 +43,7 @@ export default function Community() {
                             className="size-2.5"
                         />
                     </article>
-                    <article className="flex-1 relative">
+                    <div className="flex-1 relative">
                         <input
                             className="w-full px-3 py-2 bg-neutral-950 border border-neutral-800 rounded-full text-sm text-neutral-300 focus:outline-none focus:border-neutral-600 peer"
                             placeholder="검색어를 입력하세요"
@@ -55,6 +55,11 @@ export default function Community() {
                             height={20}
                             className="size-5 absolute right-4 top-1.5 z-10 peer-focus:hidden"
                         />
+                    </div>
+                    <article>
+                        <button className="bg-blue-800 px-3 py-1.5 border border-neutral-800 rounded-full">
+                            게시글 작성
+                        </button>
                     </article>
                 </section>
                 <CommunityTestSection1 />

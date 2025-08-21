@@ -15,8 +15,10 @@ export default function Button({
 }: ButtonProps) {
     const { pending } = useFormStatus();
     return (
-        <button className={containerStyles} disabled={pending}>
-            <span className={textStyles}>{pending ? "로딩 중" : text}</span>
+        <button className={`${containerStyles}`} disabled={pending}>
+            <span className={`${textStyles}`}>
+                {pending ? "로딩 중" : text}
+            </span>
         </button>
     );
 }

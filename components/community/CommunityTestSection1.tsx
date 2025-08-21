@@ -20,16 +20,9 @@ export default function CommunityTestSection1() {
                 />
             </article>
             <article>
-                <h1 className="text-xl font-bold my-2">
-                    AITAH for not wanting to cook for my gf anymore because she
-                    is a picky eater ?
-                </h1>
+                <h1 className="text-xl font-bold my-2">테스트</h1>
                 <p className="text-neutral-300">
-                    My girlfriend however eats like a 7 year old on a chicken
-                    nugget diet. She doesn’t eat beef, pork, or fish only
-                    chicken. She doesn't eat most greens unless they’re in a
-                    burger and the texture isn't noticeable. No mushrooms, no
-                    beans etc..,
+                    나의 햄스터는 정말 귀여운 햄스터에요 !!
                 </p>
             </article>
             <article className="w-full h-96 bg-neutral-300 rounded-xl" />
